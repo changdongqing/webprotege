@@ -1,5 +1,9 @@
 package edu.stanford.bmir.protege.web.client.entity;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
+import com.google.gwt.core.client.GWT;
+
 import edu.stanford.bmir.protege.web.client.csv.CSVImportDialogController;
 import edu.stanford.bmir.protege.web.client.csv.CSVImportDialogControllerFactory;
 import edu.stanford.bmir.protege.web.client.csv.CSVImportViewImpl;
@@ -28,6 +32,8 @@ public class CsvImportPresenter {
 
     private final CSVImportDialogControllerFactory dialogControllerFactory;
 
+    private static final Messages MESSAGES = GWT.create(Messages.class);
+
     public CsvImportPresenter(OWLClass baseClass,
                               MessageBox messageBox,
                               CSVImportDialogControllerFactory dialogControllerFactory) {
@@ -41,7 +47,7 @@ public class CsvImportPresenter {
             @Override
             public void handleFileUploaded(final DocumentId fileDocumentId) {
                 WebProtegeDialog<CSVImportDescriptor> csvImportDialog = new WebProtegeDialog<>(
-                        dialogControllerFactory.create(fileDocumentId, baseClass));
+                        dialogControllerFactory.create(fileDocumentId, baseClass, MESSAGES));
                 csvImportDialog.setVisible(true);
             }
 
@@ -49,10 +55,10 @@ public class CsvImportPresenter {
             public void handleFileUploadFailed(
                     String errorMessage) {
                 ProgressMonitor.get().hideProgressMonitor();
-                messageBox.showAlert("Error uploading CSV file", errorMessage);
+                messageBox.showAlert(MESSAGES.csv_errorUploadingCsvFile(), errorMessage);
             }
         };
-        UploadFileDialogController controller = new UploadFileDialogController("Upload CSV",
+        UploadFileDialogController controller = new UploadFileDialogController(MESSAGES.csv_uploadCsv_title(),
                                                                                uploadResultHandler);
 
         WebProtegeDialog.showDialog(controller);

@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.server.dispatch;
 
+import edu.stanford.bmir.protege.web.server.i18n.ServerMessages;
+
 import com.google.common.collect.ImmutableList;
 import edu.stanford.bmir.protege.web.shared.dispatch.ActionExecutionException;
 import edu.stanford.bmir.protege.web.shared.dispatch.DispatchService;
@@ -54,6 +56,14 @@ public class DispatchServlet extends WebProtegeRemoteServiceServlet implements D
         HttpSession session = request.getSession();
         final RequestContext requestContext = new RequestContext(userId);
         final ExecutionContext executionContext = new ExecutionContext(new WebProtegeSessionImpl(session));
-        return executor.execute(action, requestContext, executionContext);
+        if (!locales.isEmpty()) {
+            ServerMessages.setLocale(locales.get(0));
+        }
+        try {
+            return executor.execute(action, requestContext, executionContext);
+        }
+        finally {
+            ServerMessages.clear();
+        }
     }
 }

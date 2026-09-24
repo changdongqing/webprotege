@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.server.dispatch.validators;
 
+import edu.stanford.bmir.protege.web.server.i18n.ServerMessages;
+
 import edu.stanford.bmir.protege.web.server.access.AccessManager;
 import edu.stanford.bmir.protege.web.server.access.ProjectResource;
 import edu.stanford.bmir.protege.web.server.dispatch.RequestValidationResult;
@@ -44,7 +46,8 @@ public class ProjectPermissionValidator implements RequestValidator {
             return RequestValidationResult.getValid();
         }
         else {
-            return RequestValidationResult.getInvalid("Permission denied for " + actionId.getId());
+            return RequestValidationResult.getInvalid(ServerMessages.get("server.permissionDeniedForActionId",
+                    "Permission denied for {0}", actionId.getId()));
         }
     }
 }

@@ -1,5 +1,9 @@
 package edu.stanford.bmir.protege.web.client.merge_add;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
+import com.google.gwt.core.client.GWT;
+
 import com.google.gwt.user.client.ui.Widget;
 import edu.stanford.bmir.protege.web.client.library.dlg.HasRequestFocus;
 import edu.stanford.bmir.protege.web.client.library.dlg.WebProtegeOKCancelDialogController;
@@ -8,10 +12,12 @@ import javax.annotation.Nonnull;
 
 public class SelectOptionDialogController extends WebProtegeOKCancelDialogController<Integer> {
 
+    private static final Messages MESSAGES = GWT.create(Messages.class);
+
     private SelectOptionView view;
 
     public SelectOptionDialogController(SelectOptionView view) {
-        super("Select Merge Type");
+        super(MESSAGES.merge_selectMergeType());
         this.view = view;
     }
 

@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.merge;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.gwt.core.client.GWT;
 import edu.stanford.bmir.protege.web.shared.csv.DocumentId;
 import edu.stanford.bmir.protege.web.client.library.dlg.WebProtegeDialog;
@@ -22,6 +24,8 @@ public class UploadAndMergeProjectWorkflow {
     @Nonnull
     private final MergeUploadedProjectWorkflow mergeWorkflow;
 
+    private static final Messages MESSAGES = GWT.create(Messages.class);
+
     @Inject
     public UploadAndMergeProjectWorkflow(@Nonnull MergeUploadedProjectWorkflow mergeWorkflow) {
         this.mergeWorkflow = checkNotNull(mergeWorkflow);
@@ -32,7 +36,7 @@ public class UploadAndMergeProjectWorkflow {
     }
 
     private void uploadProject(final ProjectId projectId) {
-        UploadFileDialogController uploadFileDialogController = new UploadFileDialogController("Upload ontologies", new UploadFileResultHandler() {
+        UploadFileDialogController uploadFileDialogController = new UploadFileDialogController(MESSAGES.merge_uploadOntologies(), new UploadFileResultHandler() {
             @Override
             public void handleFileUploaded(DocumentId fileDocumentId) {
                 startMergeWorkflow(projectId, fileDocumentId);

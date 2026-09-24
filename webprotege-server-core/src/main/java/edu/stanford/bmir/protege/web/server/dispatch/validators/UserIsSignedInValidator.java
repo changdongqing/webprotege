@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.server.dispatch.validators;
 
+import edu.stanford.bmir.protege.web.server.i18n.ServerMessages;
+
 import edu.stanford.bmir.protege.web.server.dispatch.RequestValidationResult;
 import edu.stanford.bmir.protege.web.server.dispatch.RequestValidator;
 import edu.stanford.bmir.protege.web.shared.user.UserId;
@@ -20,7 +22,8 @@ public class UserIsSignedInValidator implements RequestValidator {
     @Override
     public RequestValidationResult validateAction() {
         if(userId.isGuest()) {
-            return RequestValidationResult.getInvalid("You must be signed in to perform this operation.  Please sign in.");
+            return RequestValidationResult.getInvalid(ServerMessages.get("server.mustBeSignedIn",
+                                                                          "You must be signed in to perform this operation.  Please sign in."));
         }
         else {
             return RequestValidationResult.getValid();

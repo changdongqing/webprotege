@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.form;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.gwt.place.shared.Place;
@@ -56,6 +58,8 @@ public class FormEditorPresenter implements Presenter {
     @Nonnull
     private final MessageBox messageBox;
 
+    private final Messages messages;
+
     @Inject
     public FormEditorPresenter(ProjectId projectId,
                                @Nonnull DispatchServiceManager dispatch,
@@ -63,7 +67,8 @@ public class FormEditorPresenter implements Presenter {
                                @Nonnull FormDescriptorPresenter formDescriptorPresenter,
                                @Nonnull EntityFormSelectorPresenter entityFormSelectorPresenter,
                                @Nonnull PlaceController placeController,
-                               @Nonnull MessageBox messageBox) {
+                               @Nonnull MessageBox messageBox,
+                               Messages messages) {
         this.projectId = checkNotNull(projectId);
         this.dispatch = checkNotNull(dispatch);
         this.settingsPresenter = checkNotNull(settingsPresenter);
@@ -71,6 +76,7 @@ public class FormEditorPresenter implements Presenter {
         this.entityFormSelectorPresenter = entityFormSelectorPresenter;
         this.placeController = checkNotNull(placeController);
         this.messageBox = messageBox;
+        this.messages = checkNotNull(messages);
     }
 
     public void setFormId(@Nonnull FormId formId) {
@@ -123,7 +129,7 @@ public class FormEditorPresenter implements Presenter {
     private void handleApply() {
         LanguageMap languageMap = formDescriptorPresenter.getFormLabel();
         if(languageMap.asMap().isEmpty()) {
-            messageBox.showAlert("Please provide a label for this form");
+            messageBox.showAlert(messages.forms_provideLabel());
             return;
         }
         dispatch.execute(new SetEntityFormDescriptorAction(projectId,

@@ -58,10 +58,10 @@ public class ChangeEmailAddressPresenter {
     public void changeEmail() {
         final UserId userId = loggedInUserProvider.getCurrentUserId();
         if (userId.isGuest()) {
-            messageBox.showAlert("You must be logged in to change your email address");
+            messageBox.showAlert(messages.mail_mustBeLoggedIn());
             return;
         }
-        ProgressMonitor.get().showProgressMonitor("Retrieving email address", "Please wait.");
+        ProgressMonitor.get().showProgressMonitor(messages.mail_retrievingEmailAddress(), messages.common_pleaseWait());
 
         dispatchServiceManager.execute(new GetEmailAddressAction(userId), result -> {
             showDialog(result.getEmailAddress());
@@ -80,7 +80,7 @@ public class ChangeEmailAddressPresenter {
         presenter.setButtonHandler(DialogButton.OK, closer -> {
             view.getValue().ifPresent(address -> changeEmailAddress(userId, address, closer));
             if(!view.getValue().isPresent()) {
-                messageBox.showAlert("The specified email addresses do not match.");
+                messageBox.showAlert(messages.mail_emailAddressesDoNotMatch());
             }
         });
         modalManager.showModal(presenter);
@@ -90,9 +90,8 @@ public class ChangeEmailAddressPresenter {
         dispatchServiceManager.execute(new SetEmailAddressAction(userId, address.getEmailAddress()),
                                        result -> {
                                            if (result.getResult() == ADDRESS_ALREADY_EXISTS) {
-                                               messageBox.showMessage("Address already taken",
-                                                                      "The email address that you have specified is taken by another user.  " +
-                                                                              "Please specify a different email address.");
+                                               messageBox.showMessage(messages.mail_addressAlreadyTaken_title(),
+                                                                      messages.mail_emailAddressTaken());
                                            }
                                            else {
                                                closer.closeModal();

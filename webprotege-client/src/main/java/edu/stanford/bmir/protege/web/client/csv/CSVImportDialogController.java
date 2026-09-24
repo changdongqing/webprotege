@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.csv;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.auto.factory.AutoFactory;
 import com.google.auto.factory.Provided;
 import com.google.gwt.user.client.ui.Widget;
@@ -20,6 +22,8 @@ import javax.inject.Inject;
  * Date: 20/05/2013
  */
 public class CSVImportDialogController extends WebProtegeOKCancelDialogController<CSVImportDescriptor> {
+
+    private final Messages messages;
 
     private static final int ROW_LIMIT = 50;
 
@@ -50,8 +54,10 @@ public class CSVImportDialogController extends WebProtegeOKCancelDialogControlle
                                      @Provided@Nonnull DispatchErrorMessageDisplay errorDisplay,
                                      @Provided @Nonnull ProgressDisplay progressDisplay,
                                      @Provided final CSVImportViewImpl csvImportView,
-                                     @Provided MessageBox messageBox) {
-        super("Import CSV File");
+                                     @Provided MessageBox messageBox,
+                                     Messages messages) {
+        super(messages.csv_importCsvFile_title());
+        this.messages = messages;
         this.projectId = projId;
         this.csvDocumentId = documentId;
         this.importRoot = importRootClass;
@@ -74,7 +80,7 @@ public class CSVImportDialogController extends WebProtegeOKCancelDialogControlle
 
                 @Override
                 public void handleSuccess(ImportCSVFileResult result) {
-                    CSVImportDialogController.this.messageBox.showMessage("CSV import succeeded", result.getRowCount() + " rows were imported");
+                    CSVImportDialogController.this.messageBox.showMessage(messages.csv_importSucceeded_title(), messages.csv_rowsImported(result.getRowCount()));
                 }
 
                 @Override
@@ -84,7 +90,7 @@ public class CSVImportDialogController extends WebProtegeOKCancelDialogControlle
 
                 @Override
                 public String getProgressDisplayMessage() {
-                    return "Please wait.";
+                    return messages.common_pleaseWait();
                 }
             });
             closer.hide();

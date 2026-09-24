@@ -6,6 +6,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.web.bindery.event.shared.EventBus;
+import edu.stanford.bmir.protege.web.client.Messages;
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchServiceManager;
 import edu.stanford.bmir.protege.web.client.form.LanguageMapCurrentLocaleMapper;
 import edu.stanford.bmir.protege.web.client.library.msgbox.MessageBox;
@@ -26,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import static edu.stanford.bmir.protege.web.shared.access.BuiltInAction.ADD_OR_REMOVE_VIEW;
 import static edu.stanford.bmir.protege.web.shared.perspective.ResetPerspectiveLayoutAction.resetPerspective;
 
@@ -62,6 +64,8 @@ public class PerspectivePresenter implements HasDispose {
 
     private final LanguageMapCurrentLocaleMapper localeMapper;
 
+    private final Messages messages;
+
 
     @Inject
     public PerspectivePresenter(final PerspectiveView perspectiveView,
@@ -72,7 +76,8 @@ public class PerspectivePresenter implements HasDispose {
                                 PerspectiveFactory perspectiveFactory,
                                 EmptyPerspectivePresenterFactory emptyPerspectivePresenterFactory,
                                 PortletChooserPresenter portletChooserPresenter,
-                                MessageBox messageBox, LanguageMapCurrentLocaleMapper localeMapper) {
+                                MessageBox messageBox, LanguageMapCurrentLocaleMapper localeMapper,
+                                Messages messages) {
         this.perspectiveView = perspectiveView;
         this.loggedInUserProvider = loggedInUserProvider;
         this.permissionChecker = permissionChecker;
@@ -83,6 +88,7 @@ public class PerspectivePresenter implements HasDispose {
         this.portletChooserPresenter = portletChooserPresenter;
         this.messageBox = messageBox;
         this.localeMapper = localeMapper;
+        this.messages = checkNotNull(messages);
     }
 
     public void start(AcceptsOneWidget container, EventBus eventBus, ProjectViewPlace place) {
@@ -101,9 +107,8 @@ public class PerspectivePresenter implements HasDispose {
     private void handleResetPerspective(ResetPerspectiveEvent event) {
         PerspectiveDescriptor perspectiveDescriptor = event.getPerspectiveDescriptor();
         String label = localeMapper.getValueForCurrentLocale(perspectiveDescriptor.getLabel());
-        messageBox.showYesNoConfirmBox("Reset tab?",
-                                       "Are you sure you want to reset the <em>" +
-                                               label + "</em> tab to the default state?",
+        messageBox.showYesNoConfirmBox(messages.perspective_resetConfirmation_title(),
+                                       messages.perspective_resetTabToDefaultState(label),
                                        () -> executeResetPerspective(perspectiveDescriptor.getPerspectiveId()));
     }
 
@@ -138,7 +143,7 @@ public class PerspectivePresenter implements HasDispose {
         if(perspective != null) {
             perspective.dispose();
             if(currentPerspective.equals(java.util.Optional.of(perspective.getPerspectiveId()))) {
-                perspectiveView.setWidget(new Label("Nothing Here"));
+                perspectiveView.setWidget(new Label(messages.perspective_nothingHere()));
             }
         }
     }

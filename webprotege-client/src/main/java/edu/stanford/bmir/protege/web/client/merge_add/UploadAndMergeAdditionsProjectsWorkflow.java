@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.merge_add;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.gwt.core.client.GWT;
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchErrorMessageDisplay;
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchServiceCallbackWithProgressDisplay;
@@ -36,6 +38,8 @@ public class UploadAndMergeAdditionsProjectsWorkflow {
     @Nonnull
     private final ProgressDisplay progressDisplay;
 
+    private static final Messages MESSAGES = GWT.create(Messages.class);
+
     @Inject
     public UploadAndMergeAdditionsProjectsWorkflow(@Nonnull SelectOptionForMergeAdditionsWorkflow selectOptionsWorkflow,
                                                    @Nonnull DispatchServiceManager dispatchServiceManager,
@@ -52,7 +56,7 @@ public class UploadAndMergeAdditionsProjectsWorkflow {
     }
 
     private void uploadProject(final ProjectId projectId) {
-        UploadFileDialogController uploadFileDialogController = new UploadFileDialogController("Upload ontologies", new UploadFileResultHandler() {
+        UploadFileDialogController uploadFileDialogController = new UploadFileDialogController(MESSAGES.merge_uploadOntologies(), new UploadFileResultHandler() {
             @Override
             public void handleFileUploaded(DocumentId fileDocumentId) {
                 getOntologies(projectId, fileDocumentId);

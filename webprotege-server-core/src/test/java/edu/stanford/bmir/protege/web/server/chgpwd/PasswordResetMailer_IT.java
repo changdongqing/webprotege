@@ -9,6 +9,7 @@ import edu.stanford.bmir.protege.web.server.mail.MessagingExceptionHandler;
 import edu.stanford.bmir.protege.web.server.mail.SendMailImpl;
 import edu.stanford.bmir.protege.web.server.templates.TemplateEngine;
 import edu.stanford.bmir.protege.web.shared.user.UserId;
+import java.util.Properties;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -69,7 +70,8 @@ public class PasswordResetMailer_IT {
                                                              templateEngine,
                                                              templateFile,
                                                              placeUrl,
-                                                             appNameProvider);
+                                                             appNameProvider,
+                                                             new Properties());
         mailer.sendEmail(userId, emailAddress, theNewPassword, e -> {});
         verify(sendMailImpl, times(1)).sendMail(
                 eq(singletonList(emailAddress)),

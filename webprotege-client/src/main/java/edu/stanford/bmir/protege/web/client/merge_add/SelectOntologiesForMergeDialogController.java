@@ -1,5 +1,9 @@
 package edu.stanford.bmir.protege.web.client.merge_add;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
+import com.google.gwt.core.client.GWT;
+
 import com.google.gwt.user.client.ui.Widget;
 import edu.stanford.bmir.protege.web.client.library.dlg.HasRequestFocus;
 import edu.stanford.bmir.protege.web.client.library.dlg.WebProtegeOKCancelDialogController;
@@ -9,10 +13,12 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 public class SelectOntologiesForMergeDialogController extends WebProtegeOKCancelDialogController<List<OWLOntologyID>> {
+
+    private static final Messages MESSAGES = GWT.create(Messages.class);
     final private SelectOntologiesForMergeView view;
 
     public SelectOntologiesForMergeDialogController(SelectOntologiesForMergeView view) {
-        super("Select Ontologies");
+        super(MESSAGES.merge_selectOntologies());
         this.view = view;
     }
 

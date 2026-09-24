@@ -6,6 +6,7 @@ import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.*;
+import edu.stanford.bmir.protege.web.client.Messages;
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchServiceCallback;
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchServiceManager;
 import edu.stanford.bmir.protege.web.client.permissions.LoggedInUserProjectPermissionChecker;
@@ -38,13 +39,13 @@ import static edu.stanford.bmir.protege.web.shared.permissions.PermissionsChange
  */
 public class EditorPresenter implements HasDispose {
 
-    private static final Label NOTHING_SELECTED_WIDGET = new Label("Nothing selected");
-
     private static final int VALUE_CHANGED_COMMIT_DELAY_MS = 2000;
 
     private final DispatchServiceManager dispatchServiceManager;
 
     private final LoggedInUserProjectPermissionChecker permissionChecker;
+
+    private final Messages messages;
 
     private final ContextMapper contextMapper;
 
@@ -80,11 +81,13 @@ public class EditorPresenter implements HasDispose {
     @Inject
     public EditorPresenter(@Nonnull ProjectId projectId, DispatchServiceManager dispatchServiceManager,
                            ContextMapper contextMapper,
-                           LoggedInUserProjectPermissionChecker permissionChecker) {
+                           LoggedInUserProjectPermissionChecker permissionChecker,
+                           Messages messages) {
         this.projectId = projectId;
         this.contextMapper = contextMapper;
         this.dispatchServiceManager = dispatchServiceManager;
         this.permissionChecker = permissionChecker;
+        this.messages = checkNotNull(messages);
     }
 
     public void start(@Nonnull AcceptsOneWidget container, @Nonnull WebProtegeEventBus eventBus) {
@@ -122,7 +125,7 @@ public class EditorPresenter implements HasDispose {
             bindNext(editorContext.get());
         }
         else {
-            editorHolder.setWidget(NOTHING_SELECTED_WIDGET);
+            editorHolder.setWidget(new Label(messages.nothingSelected()));
         }
     }
 
@@ -195,7 +198,7 @@ public class EditorPresenter implements HasDispose {
             });
         }
         else {
-            editorHolder.setWidget(new Label("No editor available for selection: " + editorCtx));
+            editorHolder.setWidget(new Label(messages.editor_noEditorAvailable(editorCtx.toString())));
         }
     }
 

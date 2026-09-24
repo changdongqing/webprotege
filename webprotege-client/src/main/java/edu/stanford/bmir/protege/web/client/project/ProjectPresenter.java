@@ -3,6 +3,7 @@ package edu.stanford.bmir.protege.web.client.project;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.web.bindery.event.shared.EventBus;
+import edu.stanford.bmir.protege.web.client.Messages;
 import edu.stanford.bmir.protege.web.client.app.PermissionScreener;
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchServiceManager;
 import edu.stanford.bmir.protege.web.client.events.EventPollingManager;
@@ -23,6 +24,7 @@ import javax.annotation.Nonnull;
 import javax.inject.Inject;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
+import static com.google.common.base.Preconditions.checkNotNull;
 import static edu.stanford.bmir.protege.web.shared.access.BuiltInAction.VIEW_PROJECT;
 
 /**
@@ -53,6 +55,8 @@ public class ProjectPresenter implements HasDispose, HasProjectId {
 
     private final ProjectTagsStyleManager projectTagsStyleManager;
 
+    private final Messages messages;
+
 
     @Inject
     public ProjectPresenter(ProjectId projectId,
@@ -64,7 +68,8 @@ public class ProjectPresenter implements HasDispose, HasProjectId {
                             PerspectiveSwitcherPresenter linkBarPresenter,
                             PerspectivePresenter perspectivePresenter,
                             PermissionScreener permissionScreener,
-                            ProjectTagsStyleManager projectTagsStyleManager) {
+                            ProjectTagsStyleManager projectTagsStyleManager,
+                            Messages messages) {
         this.projectId = projectId;
         this.view = view;
         this.busyView = busyView;
@@ -75,6 +80,7 @@ public class ProjectPresenter implements HasDispose, HasProjectId {
         this.linkBarPresenter = linkBarPresenter;
         this.perspectivePresenter = perspectivePresenter;
         this.projectTagsStyleManager = projectTagsStyleManager;
+        this.messages = checkNotNull(messages);
     }
 
     @Nonnull
@@ -87,7 +93,7 @@ public class ProjectPresenter implements HasDispose, HasProjectId {
                       @Nonnull EventBus eventBus,
                       @Nonnull ProjectViewPlace place) {
         GWT.log("[ProjectPresenter] Starting project presenter " + eventBus.getClass().getName());
-        busyView.setMessage("Loading project.  Please wait.");
+        busyView.setMessage(messages.project_loading());
         container.setWidget(busyView);
         permissionScreener.checkPermission(VIEW_PROJECT.getActionId(),
                                            container,

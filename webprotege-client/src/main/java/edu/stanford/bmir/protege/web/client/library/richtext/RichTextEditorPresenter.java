@@ -1,5 +1,9 @@
 package edu.stanford.bmir.protege.web.client.library.richtext;
 
+import com.google.gwt.core.client.GWT;
+
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import edu.stanford.bmir.protege.web.client.library.msgbox.InputBox;
 import edu.stanford.bmir.protege.web.client.library.msgbox.InputBoxHandler;
 
@@ -19,6 +23,8 @@ public class RichTextEditorPresenter {
 
     @Nonnull
     private final InputBox inputBox;
+
+    private static final Messages MESSAGES = GWT.create(Messages.class);
 
     public RichTextEditorPresenter(final RichTextToolbar toolbar, final RichTextEditorView editorView, @Nonnull InputBox inputBox) {
         this.toolbar = toolbar;
@@ -60,7 +66,7 @@ public class RichTextEditorPresenter {
 
             @Override
             public void handleCreateLink() {
-                RichTextEditorPresenter.this.inputBox.showDialog("Enter link URL", new InputBoxHandler() {
+                RichTextEditorPresenter.this.inputBox.showDialog(MESSAGES.common_enterLinkUrl(), new InputBoxHandler() {
                     @Override
                     public void handleAcceptInput(String input) {
                         editorView.createLink(input);

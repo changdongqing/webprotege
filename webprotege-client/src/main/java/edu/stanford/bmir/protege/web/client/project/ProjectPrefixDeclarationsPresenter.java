@@ -108,12 +108,12 @@ public class ProjectPrefixDeclarationsPresenter implements Presenter {
                                        new DispatchServiceCallbackWithProgressDisplay<GetProjectPrefixDeclarationsResult>(errorDisplay, progressDisplay) {
                                            @Override
                                            public String getProgressDisplayTitle() {
-                                               return "Retrieving prefixes";
+                                               return messages.prefixes_progressRetrieving_title();
                                            }
 
                                            @Override
                                            public String getProgressDisplayMessage() {
-                                               return "Retrieving prefixes.  Please wait.";
+                                               return messages.prefixes_progressRetrieving_message();
                                            }
 
                                            @Override
@@ -174,8 +174,8 @@ public class ProjectPrefixDeclarationsPresenter implements Presenter {
         for (PrefixDeclaration decl : view.getPrefixDeclarations()) {
             PrefixDeclaration existing = prefixDeclarations.put(decl.getPrefixName(), decl);
             if (existing != null) {
-                messageBox.showAlert("Duplicate prefix name bindings",
-                                     "Prefix name " + existing.getPrefixName() + " is bound to more than one prefix.");
+                messageBox.showAlert(messages.prefixes_duplicateBindings_title(),
+                                     messages.prefixes_duplicateBindings_message(existing.getPrefixName()));
                 return true;
             }
         }
@@ -207,7 +207,7 @@ public class ProjectPrefixDeclarationsPresenter implements Presenter {
         Optional<Place> nextPlace = getNextPlace();
         nextPlace.ifPresent(placeController::goTo);
         if(!nextPlace.isPresent()) {
-            messageBox.showMessage("Changes Applied", "Your changes have been applied.");
+            messageBox.showMessage(messages.prefixes_changesApplied_title(), messages.prefixes_changesApplied_message());
         }
     }
 

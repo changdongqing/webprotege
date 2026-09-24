@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.server.project.chg;
 
+import edu.stanford.bmir.protege.web.server.i18n.ServerMessages;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import edu.stanford.bmir.protege.web.server.access.AccessManager;
@@ -349,7 +351,7 @@ public class ChangeManager implements HasApplyChanges {
         var subject = forUser(userId);
         var projectResource = new ProjectResource(projectId);
         if(!accessManager.hasPermission(subject, projectResource, EDIT_ONTOLOGY)) {
-            throw new PermissionDeniedException("You do not have permission to edit this project",
+            throw new PermissionDeniedException(ServerMessages.get("server.noPermissionEditProject", "You do not have permission to edit this project"),
                                                 userInSessionFactory.getUserInSession(userId));
         }
     }
@@ -384,28 +386,28 @@ public class ChangeManager implements HasApplyChanges {
         var projectResource = new ProjectResource(projectId);
         if(entity.isOWLClass()) {
             if(!accessManager.hasPermission(subject, projectResource, CREATE_CLASS)) {
-                throw new PermissionDeniedException("You do not have permission to create new classes",
+                throw new PermissionDeniedException(ServerMessages.get("server.noPermissionCreateClasses", "You do not have permission to create new classes"),
                                                     userInSessionFactory
                                                             .getUserInSession(userId));
             }
         }
         else if(entity.isOWLObjectProperty() || entity.isOWLDataProperty() || entity.isOWLAnnotationProperty()) {
             if(!accessManager.hasPermission(subject, projectResource, CREATE_PROPERTY)) {
-                throw new PermissionDeniedException("You do not have permission to create new properties",
+                throw new PermissionDeniedException(ServerMessages.get("server.noPermissionCreateProperties", "You do not have permission to create new properties"),
                                                     userInSessionFactory
                                                             .getUserInSession(userId));
             }
         }
         else if(entity.isOWLNamedIndividual()) {
             if(!accessManager.hasPermission(subject, projectResource, CREATE_INDIVIDUAL)) {
-                throw new PermissionDeniedException("You do not have permission to create new individuals",
+                throw new PermissionDeniedException(ServerMessages.get("server.noPermissionCreateIndividuals", "You do not have permission to create new individuals"),
                                                     userInSessionFactory
                                                             .getUserInSession(userId));
             }
         }
         else if(entity.isOWLDatatype()) {
             if(!accessManager.hasPermission(subject, projectResource, CREATE_DATATYPE)) {
-                throw new PermissionDeniedException("You do not have permission to create new datatypes",
+                throw new PermissionDeniedException(ServerMessages.get("server.noPermissionCreateDatatypes", "You do not have permission to create new datatypes"),
                                                     userInSessionFactory
                                                             .getUserInSession(userId));
             }

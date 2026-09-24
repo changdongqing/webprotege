@@ -1083,12 +1083,8 @@ public interface Messages extends com.google.gwt.i18n.client.Messages {
     @DefaultMessage("The tag <strong>{0}</strong> is used to tag <strong>{1,number}&nbsp;entities</strong>.  Are you sure that you want to delete this tag?" +
             "<br><br>" +
             "This operation cannot be undone.")
-    @AlternateMessage({
-            "one", "The tag <strong>{0}</strong> is used to tag <strong>one entity</strong>.  Are you sure that you want to delete this tag?" +
-            "<br><br>" +
-            "This operation cannot be undone."})
     @Key("tags.deleteConfirmationMessage")
-    String tags_deleteConfirmationMessage(String tagLabel, @PluralCount int usageCount);
+    String tags_deleteConfirmationMessage(String tagLabel, int usageCount);
 
     @DefaultMessage("Tags")
     @Key("tags.editProjectTags")
@@ -1280,7 +1276,6 @@ public interface Messages extends com.google.gwt.i18n.client.Messages {
     String password_change_currentPasswordIncorrect_Body();
 
     @DefaultMessage("({0,number} rows in total)")
-    @AlternateMessage({"one", "(1 row in total)"})
     @Key("pagination.rows")
     String pagination_rows(long elementCount);
 
@@ -1368,4 +1363,413 @@ public interface Messages extends com.google.gwt.i18n.client.Messages {
     @DefaultMessage("Are you sure that you want to reset the tabs to the default set of tabs?  This cannot be undone.")
     @Key("perspective.resetConfirmation.message")
     String perspective_resetConfirmation_message();
+
+    // =====================================================================
+    // 汉化改造（P1）新增词条：将客户端硬编码文案迁入 i18n 通道。
+    // 对应翻译见 Messages_zh.properties，由 docs/hanhua/check_zh.py 做 parity 校验。
+    // =====================================================================
+
+    @DefaultMessage("Please wait")
+    @Key("common.pleaseWait")
+    String common_pleaseWait();
+
+    @DefaultMessage("Enter link URL")
+    @Key("common.enterLinkUrl")
+    String common_enterLinkUrl();
+
+    @DefaultMessage("Please correct the highlighted errors on the form")
+    @Key("common.correctHighlightedErrors")
+    String common_correctHighlightedErrors();
+
+    @DefaultMessage("Nothing to select")
+    @Key("select.nothingToSelect")
+    String select_nothingToSelect();
+
+    @DefaultMessage("Enter an entity name")
+    @Key("frame.enterAnEntityName")
+    String frame_enterAnEntityName();
+
+    @DefaultMessage("Enter property name")
+    @Key("frame.enterPropertyName")
+    String frame_enterPropertyName();
+
+    @DefaultMessage("Enter string, number etc.")
+    @Key("frame.enterStringNumberEtc")
+    String frame_enterStringNumberEtc();
+
+    @DefaultMessage("Enter class or individual name")
+    @Key("frame.enterClassOrIndividualName")
+    String frame_enterClassOrIndividualName();
+
+    @DefaultMessage("Enter datatype, string, number etc.")
+    @Key("frame.enterDatatypeStringNumberEtc")
+    String frame_enterDatatypeStringNumberEtc();
+
+    @DefaultMessage("Language filter")
+    @Key("lang.languageFilter")
+    String lang_languageFilter();
+
+    @DefaultMessage("No remaining languages")
+    @Key("lang.noRemainingLanguages")
+    String lang_noRemainingLanguages();
+
+    @DefaultMessage("Add filter")
+    @Key("search.addFilter")
+    String search_addFilter();
+
+    @DefaultMessage("No remaining filters")
+    @Key("search.noRemainingFilters")
+    String search_noRemainingFilters();
+
+    @DefaultMessage("Nothing Here")
+    @Key("perspective.nothingHere")
+    String perspective_nothingHere();
+
+    @DefaultMessage("No view class specified")
+    @Key("perspective.noViewClassSpecified")
+    String perspective_noViewClassSpecified();
+
+    @DefaultMessage("Are you sure you want to reset the <em>{0}</em> tab to the default state?")
+    @Key("perspective.resetTabToDefaultState")
+    String perspective_resetTabToDefaultState(String label);
+
+    @DefaultMessage("Loading project. Please wait.")
+    @Key("project.loading")
+    String project_loading();
+
+    @DefaultMessage("Project name missing")
+    @Key("project.nameMissing.title")
+    String project_nameMissing_title();
+
+    @DefaultMessage("The project name {0} is already registered.  Please try a different name.")
+    @Key("project.nameAlreadyRegistered")
+    String project_nameAlreadyRegistered(String projectName);
+
+    @DefaultMessage("You do not have permission to create new projects")
+    @Key("projects.createForbidden")
+    String projects_createForbidden();
+
+    @DefaultMessage("Error uploading CSV file")
+    @Key("csv.errorUploadingCsvFile")
+    String csv_errorUploadingCsvFile();
+
+    @DefaultMessage("Select value type")
+    @Key("csv.selectValueType")
+    String csv_selectValueType();
+
+    @DefaultMessage("You do not have permission to watch changes in this project")
+    @Key("watches.forbidden")
+    String watches_forbidden();
+
+    @DefaultMessage("Select Merge Type")
+    @Key("merge.selectMergeType")
+    String merge_selectMergeType();
+
+    @DefaultMessage("Select Ontology")
+    @Key("merge.selectOntology")
+    String merge_selectOntology();
+
+    @DefaultMessage("Select Ontologies")
+    @Key("merge.selectOntologies")
+    String merge_selectOntologies();
+
+    @DefaultMessage("The uploaded ontologies were successfully merged into the project")
+    @Key("merge.uploadedMergedSuccessfully")
+    String merge_uploadedMergedSuccessfully();
+
+    @DefaultMessage("The password of the guest user cannot be changed")
+    @Key("password.guestPasswordCannotBeChanged")
+    String password_guestPasswordCannotBeChanged();
+
+    @DefaultMessage("Please enter a password")
+    @Key("password.enterPasswordPrompt")
+    String password_enterPasswordPrompt();
+
+    @DefaultMessage("Enter commit message")
+    @Key("change.enterCommitMessage")
+    String change_enterCommitMessage();
+
+    @DefaultMessage("You do not have permission to view changes for this project")
+    @Key("change.viewChangesForbidden")
+    String change_viewChangesForbidden();
+
+    @DefaultMessage("The entity graph for {0} is large, with {1,number} nodes and {2,number} edges.  It may take a while to layout and display.")
+    @Key("viz.largeGraphMessage")
+    String viz_largeGraphMessage(String browserText, int nodeCount, int edgeCount);
+
+    @DefaultMessage("No Edge")
+    @Key("viz.noEdge")
+    String viz_noEdge();
+
+    @DefaultMessage("You must be logged in to change your email address")
+    @Key("mail.mustBeLoggedIn")
+    String mail_mustBeLoggedIn();
+
+    @DefaultMessage("Retrieving email address")
+    @Key("mail.retrievingEmailAddress")
+    String mail_retrievingEmailAddress();
+
+    @DefaultMessage("The specified email addresses do not match.")
+    @Key("mail.emailAddressesDoNotMatch")
+    String mail_emailAddressesDoNotMatch();
+
+    @DefaultMessage("The email address that you have specified is taken by another user.  Please specify a different email address.")
+    @Key("mail.emailAddressTaken")
+    String mail_emailAddressTaken();
+
+    @DefaultMessage("Invalid response")
+    @Key("upload.invalidResponse")
+    String upload_invalidResponse();
+
+    @DefaultMessage("You have successfully registered.")
+    @Key("signup.successfullyRegistered")
+    String signup_successfullyRegistered();
+
+    @DefaultMessage("Email address already taken")
+    @Key("signup.emailAddressAlreadyTaken.title")
+    String signup_emailAddressAlreadyTaken_title();
+
+    @DefaultMessage("User name already taken")
+    @Key("signup.userNameAlreadyTaken.title")
+    String signup_userNameAlreadyTaken_title();
+
+    @DefaultMessage("The email address {0} is already taken.  Please choose a different email address.")
+    @Key("signup.emailAddressAlreadyTaken.message")
+    String signup_emailAddressAlreadyTaken_message(String emailAddress);
+
+    @DefaultMessage("Error registering account")
+    @Key("signup.errorRegisteringAccount.title")
+    String signup_errorRegisteringAccount_title();
+
+    @DefaultMessage("There was a problem registering the specified user account.  Please contact administrator.")
+    @Key("signup.errorRegisteringAccount.message")
+    String signup_errorRegisteringAccount_message();
+
+    @DefaultMessage("Registration complete")
+    @Key("signup.registrationComplete.title")
+    String signup_registrationComplete_title();
+
+    @DefaultMessage("A user named {0} is already registered.  Please choose another name.")
+    @Key("signup.userNameAlreadyTaken.message")
+    String signup_userNameAlreadyTaken_message(String userName);
+
+    @DefaultMessage("Import CSV File")
+    @Key("csv.importCsvFile.title")
+    String csv_importCsvFile_title();
+
+    @DefaultMessage("CSV import succeeded")
+    @Key("csv.importSucceeded.title")
+    String csv_importSucceeded_title();
+
+    @DefaultMessage("{0} rows were imported")
+    @Key("csv.rowsImported")
+    String csv_rowsImported(int rowCount);
+
+    @DefaultMessage("Upload CSV")
+    @Key("csv.uploadCsv.title")
+    String csv_uploadCsv_title();
+
+    @DefaultMessage("Uploading and Merging Ontologies")
+    @Key("merge.progressUploadingAndMerging")
+    String merge_progressUploadingAndMerging();
+
+    @DefaultMessage("Merging selected ontologies into new ontology. Please wait.")
+    @Key("merge.progressMergingIntoNew")
+    String merge_progressMergingIntoNew();
+
+    @DefaultMessage("Merging selected ontologies into existing ontology. Please wait.")
+    @Key("merge.progressMergingIntoExisting")
+    String merge_progressMergingIntoExisting();
+
+    @DefaultMessage("Uploading ontologies and computing the diff.  Please wait.")
+    @Key("merge.progressComputingDiff")
+    String merge_progressComputingDiff();
+
+    @DefaultMessage("Merging ontologies")
+    @Key("merge.progressMerging")
+    String merge_progressMerging();
+
+    @DefaultMessage("Applying changes to merge ontologies.  Please wait.")
+    @Key("merge.progressApplyingMergeChanges")
+    String merge_progressApplyingMergeChanges();
+
+    @DefaultMessage("Creating project")
+    @Key("project.progressCreating")
+    String project_progressCreating();
+
+    @DefaultMessage("Upload Failed")
+    @Key("project.uploadFailed.title")
+    String project_uploadFailed_title();
+
+    @DefaultMessage("There is already a non-empty project on the server with the id {0}.  This project has NOT been overwritten.  Please contact the administrator to resolve this issue.")
+    @Key("project.documentAlreadyExists")
+    String project_documentAlreadyExists(String projectName);
+
+    @DefaultMessage("Address already taken")
+    @Key("mail.addressAlreadyTaken.title")
+    String mail_addressAlreadyTaken_title();
+
+    @DefaultMessage("Retrieving prefixes")
+    @Key("prefixes.progressRetrieving.title")
+    String prefixes_progressRetrieving_title();
+
+    @DefaultMessage("Retrieving prefixes.  Please wait.")
+    @Key("prefixes.progressRetrieving.message")
+    String prefixes_progressRetrieving_message();
+
+    @DefaultMessage("Duplicate prefix name bindings")
+    @Key("prefixes.duplicateBindings.title")
+    String prefixes_duplicateBindings_title();
+
+    @DefaultMessage("Prefix name {0} is bound to more than one prefix.")
+    @Key("prefixes.duplicateBindings.message")
+    String prefixes_duplicateBindings_message(String prefixName);
+
+    @DefaultMessage("Changes Applied")
+    @Key("prefixes.changesApplied.title")
+    String prefixes_changesApplied_title();
+
+    @DefaultMessage("Your changes have been applied.")
+    @Key("prefixes.changesApplied.message")
+    String prefixes_changesApplied_message();
+
+    @DefaultMessage("Are you sure you want to delete {0} individuals?")
+    @Key("individuals.confirmDeleteMultiple")
+    String individuals_confirmDeleteMultiple(int count);
+
+    @DefaultMessage("Please provide a label for this form")
+    @Key("forms.provideLabel")
+    String forms_provideLabel();
+
+    @DefaultMessage("No editor available for selection: {0}")
+    @Key("editor.noEditorAvailable")
+    String editor_noEditorAvailable(String editorContext);
+
+    @DefaultMessage("The following prefixes do not end in either of these characters:<br><br>{0}")
+    @Key("prefixes.invalidPrefixCharacters")
+    SafeHtml prefixes_invalidPrefixCharacters(String prefixList);
+
+    @DefaultMessage("class")
+    @Key("entityType.class")
+    String entityType_class();
+
+    @DefaultMessage("Edit Operation")
+    @Key("bulkop.editOperation")
+    String bulkop_editOperation();
+
+    @DefaultMessage("Replace matched annotations")
+    @Key("bulkop.replaceMatchedAnnotations")
+    String bulkop_replaceMatchedAnnotations();
+
+    @DefaultMessage("Delete matched annotations")
+    @Key("bulkop.deleteMatchedAnnotations")
+    String bulkop_deleteMatchedAnnotations();
+
+    @DefaultMessage("Augment matched annotations")
+    @Key("bulkop.augmentMatchedAnnotations")
+    String bulkop_augmentMatchedAnnotations();
+
+    @DefaultMessage("New property")
+    @Key("bulkop.newProperty")
+    String bulkop_newProperty();
+
+    @DefaultMessage("Matched property")
+    @Key("bulkop.matchedProperty")
+    String bulkop_matchedProperty();
+
+    @DefaultMessage("Other property")
+    @Key("bulkop.otherProperty")
+    String bulkop_otherProperty();
+
+    @DefaultMessage("Specify the property for the new annotation.")
+    @Key("bulkop.specifyProperty")
+    String bulkop_specifyProperty();
+
+    @DefaultMessage("New value")
+    @Key("bulkop.newValue")
+    String bulkop_newValue();
+
+    @DefaultMessage("Matched value")
+    @Key("bulkop.matchedValue")
+    String bulkop_matchedValue();
+
+    @DefaultMessage("Other value")
+    @Key("bulkop.otherValue")
+    String bulkop_otherValue();
+
+    @DefaultMessage("Specify the value for the new annotation.  Regular expression group identifiers may be used if a regular expression is specified above.")
+    @Key("bulkop.specifyValue")
+    String bulkop_specifyValue();
+
+    @DefaultMessage("New language tag")
+    @Key("bulkop.newLangTag")
+    String bulkop_newLangTag();
+
+    @DefaultMessage("Matched language tag")
+    @Key("bulkop.matchedLangTag")
+    String bulkop_matchedLangTag();
+
+    @DefaultMessage("Other language tag")
+    @Key("bulkop.otherLangTag")
+    String bulkop_otherLangTag();
+
+    @DefaultMessage("Specify a language tag for the new annotation.")
+    @Key("bulkop.specifyLangTag")
+    String bulkop_specifyLangTag();
+
+    @DefaultMessage("Please select how you would like to merge the ontologies")
+    @Key("merge.selectHowToMerge")
+    String merge_selectHowToMerge();
+
+    @DefaultMessage("Merge into new ontology")
+    @Key("merge.mergeIntoNewOntology")
+    String merge_mergeIntoNewOntology();
+
+    @DefaultMessage("Merge into existing ontology")
+    @Key("merge.mergeIntoExistingOntology")
+    String merge_mergeIntoExistingOntology();
+
+    @DefaultMessage("Current password")
+    @Key("password.currentPassword")
+    String password_currentPassword();
+
+    @DefaultMessage("New password")
+    @Key("password.newPassword")
+    String password_newPassword();
+
+    @DefaultMessage("Confirm new password")
+    @Key("password.confirmNewPassword")
+    String password_confirmNewPassword();
+
+    @DefaultMessage("Enter tab name")
+    @Key("perspective.enterTabName")
+    String perspective_enterTabName();
+
+    @DefaultMessage("Upload ontologies")
+    @Key("merge.uploadOntologies")
+    String merge_uploadOntologies();
+
+    @DefaultMessage("object property")
+    @Key("entityType.objectProperty")
+    String entityType_objectProperty();
+
+    @DefaultMessage("data property")
+    @Key("entityType.dataProperty")
+    String entityType_dataProperty();
+
+    @DefaultMessage("annotation property")
+    @Key("entityType.annotationProperty")
+    String entityType_annotationProperty();
+
+    @DefaultMessage("datatype")
+    @Key("entityType.datatype")
+    String entityType_datatype();
+
+    @DefaultMessage("named individual")
+    @Key("entityType.namedIndividual")
+    String entityType_namedIndividual();
+
+    @DefaultMessage("Entities")
+    @Key("entityType.entities")
+    String entityType_entities();
 }

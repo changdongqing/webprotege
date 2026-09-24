@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.server.project;
 
+import edu.stanford.bmir.protege.web.server.i18n.ServerMessages;
+
 import edu.stanford.bmir.protege.web.server.access.AccessManager;
 import edu.stanford.bmir.protege.web.server.access.ApplicationResource;
 import edu.stanford.bmir.protege.web.server.access.ProjectResource;
@@ -84,13 +86,13 @@ public class CreateNewProjectActionHandler implements ApplicationActionHandler<C
         try {
             UserId userId = executionContext.getUserId();
             if (!accessManager.hasPermission(forUser(userId), ApplicationResource.get(), CREATE_EMPTY_PROJECT)) {
-                throw new PermissionDeniedException("You do not have permission to create new projects",
+                throw new PermissionDeniedException(ServerMessages.get("server.noPermissionCreateProjects", "You do not have permission to create new projects"),
                                                     userInSessionFactory.getUserInSession(userId));
             }
             NewProjectSettings newProjectSettings = action.getNewProjectSettings();
             if (newProjectSettings.hasSourceDocument()) {
                 if (!accessManager.hasPermission(forUser(userId), ApplicationResource.get(), UPLOAD_PROJECT)) {
-                    throw new PermissionDeniedException("You do not have permission to upload projects",
+                    throw new PermissionDeniedException(ServerMessages.get("server.noPermissionUploadProjects", "You do not have permission to upload projects"),
                                                         userInSessionFactory.getUserInSession(userId));
                 }
             }

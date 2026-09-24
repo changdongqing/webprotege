@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.server.issues;
 
+import edu.stanford.bmir.protege.web.server.i18n.ServerMessages;
+
 import edu.stanford.bmir.protege.web.server.dispatch.*;
 import edu.stanford.bmir.protege.web.shared.issues.DeleteEntityCommentAction;
 import edu.stanford.bmir.protege.web.shared.issues.DeleteEntityCommentResult;
@@ -50,7 +52,7 @@ public class DeleteEntityCommentHandler implements ProjectActionHandler<DeleteEn
     }
 
     private RequestValidationResult getInvalidRequest() {
-        return RequestValidationResult.getInvalid("You do not have permission the delete this comment");
+        return RequestValidationResult.getInvalid(ServerMessages.get("server.noPermissionDeleteComment", "You do not have permission to delete this comment"));
     }
 
     @Nonnull

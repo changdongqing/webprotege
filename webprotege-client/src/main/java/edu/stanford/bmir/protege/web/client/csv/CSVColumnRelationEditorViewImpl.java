@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.csv;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
@@ -41,6 +43,8 @@ public class CSVColumnRelationEditorViewImpl extends Composite implements CSVCol
 
     private static CSVColumnRelationEditorViewImplUiBinder ourUiBinder = GWT.create(CSVColumnRelationEditorViewImplUiBinder.class);
 
+    private static final Messages MESSAGES = GWT.create(Messages.class);
+
     @UiField(provided = true)
     protected PrimitiveDataEditorImpl propertyField;
 
@@ -61,7 +65,7 @@ public class CSVColumnRelationEditorViewImpl extends Composite implements CSVCol
         this.propertyField.setAnnotationPropertiesAllowed(true);
 
         HTMLPanel rootElement = ourUiBinder.createAndBindUi(this);
-        relationTypeField.getElement().setAttribute("placeholder", "Select value type");
+        relationTypeField.getElement().setAttribute("placeholder", MESSAGES.csv_selectValueType());
 
         initWidget(rootElement);
     }

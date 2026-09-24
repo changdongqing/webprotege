@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.frame;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.GwtEvent;
@@ -116,9 +118,11 @@ public class PropertyValueDescriptorEditorPresenter implements ValueEditor<Prope
                 .DATA_PROPERTY));
     }
 
-    private static final String PROPERTY_NAME_PLACEHOLDER_TEXT = "Enter property name";
+    private static final Messages MESSAGES = GWT.create(Messages.class);
 
-    private static final String FILLER_EDITOR_PLACE_HOLDER_TEXT = "Enter value";
+    private static final String PROPERTY_NAME_PLACEHOLDER_TEXT = MESSAGES.frame_enterPropertyName();
+
+    private static final String FILLER_EDITOR_PLACE_HOLDER_TEXT = MESSAGES.frame_enterValue();
 
     private String getValuePlaceholder() {
         Optional<OWLPropertyData> propertyData = editor.getPropertyFieldValue();
@@ -127,16 +131,16 @@ public class PropertyValueDescriptorEditorPresenter implements ValueEditor<Prope
         }
         OWLPrimitiveData entityData = propertyData.get();
         if (entityData instanceof OWLAnnotationPropertyData) {
-            return "Enter string, number etc.";
+            return MESSAGES.frame_enterStringNumberEtc();
         }
         else if (entityData instanceof OWLObjectPropertyData) {
-            return "Enter class or individual name";
+            return MESSAGES.frame_enterClassOrIndividualName();
         }
         else if (entityData instanceof OWLDataPropertyData) {
-            return "Enter datatype, string, number etc.";
+            return MESSAGES.frame_enterDatatypeStringNumberEtc();
         }
         else {
-            return "Enter value";
+            return MESSAGES.frame_enterValue();
         }
     }
 

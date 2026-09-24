@@ -68,7 +68,7 @@ public class ChangePasswordPresenter {
 
     public void changePassword() {
         if (userId.isGuest()) {
-            messageBox.showAlert("The password of the guest user cannot be changed");
+            messageBox.showAlert(messages.password_guestPasswordCannotBeChanged());
             return;
         }
         showDialog();
@@ -136,7 +136,7 @@ public class ChangePasswordPresenter {
 
             @Override
             public String getProgressDisplayMessage() {
-                return "Please wait.";
+                return messages.common_pleaseWait();
             }
         });
     }

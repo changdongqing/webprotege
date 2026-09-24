@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.login;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
@@ -49,13 +51,16 @@ public class LoginPresenter implements Presenter {
 
     private final ProgressDisplay progressDisplay;
 
+    private final Messages messages;
+
 
     @Inject
     public LoginPresenter(@Nonnull LoginView view,
                           @Nonnull AuthenticatedActionExecutor loginExecutor,
                           @Nonnull LoggedInUserManager loggedInUserManager,
                           @Nonnull PlaceController placeController,
-                          @Nonnull ResetPasswordPresenter resetPasswordPresenter, DispatchErrorMessageDisplay errorDisplay, ProgressDisplay progressDisplay) {
+                          @Nonnull ResetPasswordPresenter resetPasswordPresenter, DispatchErrorMessageDisplay errorDisplay, ProgressDisplay progressDisplay,
+                          Messages messages) {
         this.view = checkNotNull(view);
         this.loginExecutor = checkNotNull(loginExecutor);
         this.loggedInUserManager = checkNotNull(loggedInUserManager);
@@ -63,6 +68,7 @@ public class LoginPresenter implements Presenter {
         this.resetPasswordPresenter = checkNotNull(resetPasswordPresenter);
         this.errorDisplay = errorDisplay;
         this.progressDisplay = progressDisplay;
+        this.messages = checkNotNull(messages);
         view.setSignInHandler(this::handleSignIn);
         view.setForgotPasswordHandler(this::handleResetPassword);
         view.setSignUpForAccountHandler(this::handleSignUpForAccout);
@@ -129,7 +135,7 @@ public class LoginPresenter implements Presenter {
 
                     @Override
                     public String getProgressDisplayMessage() {
-                        return "Please wait.";
+                        return messages.common_pleaseWait();
                     }
                 });
     }

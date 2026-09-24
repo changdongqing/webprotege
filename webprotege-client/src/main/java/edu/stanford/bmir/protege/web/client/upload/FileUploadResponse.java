@@ -1,5 +1,9 @@
 package edu.stanford.bmir.protege.web.client.upload;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
+import com.google.gwt.core.client.GWT;
+
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONString;
@@ -20,6 +24,8 @@ public class FileUploadResponse {
     private String rawResult;
 
     private JSONObject jsonObject;
+
+    private static final Messages MESSAGES = GWT.create(Messages.class);
 
     public FileUploadResponse(String rawResult) {
         this.rawResult = rawResult;
@@ -53,7 +59,7 @@ public class FileUploadResponse {
      */
     public String getUploadRejectedMessage() {
         if(jsonObject == null) {
-            return "Invalid response";
+            return MESSAGES.upload_invalidResponse();
         }
         JSONValue value = jsonObject.get(FileUploadResponseAttributes.UPLOAD_REJECTED_MESSAGE_ATTRIBUTE.name());
         if(value == null) {

@@ -8,6 +8,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
+import edu.stanford.bmir.protege.web.client.Messages;
 import edu.stanford.bmir.protege.web.client.primitive.DefaultLanguageEditor;
 import edu.stanford.bmir.protege.web.client.primitive.PrimitiveDataEditorImpl;
 import edu.stanford.bmir.protege.web.shared.bulkop.NewAnnotationData;
@@ -37,6 +38,27 @@ public class EditAnnotationsViewImpl extends Composite implements EditAnnotation
     @UiField(provided = true)
     protected AnnotationSimpleMatchingCriteriaViewImpl criteriaView;
 
+
+    @UiField
+    Label editOperationLabel;
+
+    @UiField
+    Label newPropertyLabel;
+
+    @UiField
+    Label specifyPropertyLabel;
+
+    @UiField
+    Label newValueLabel;
+
+    @UiField
+    Label specifyValueLabel;
+
+    @UiField
+    Label newLangTagLabel;
+
+    @UiField
+    Label specifyLangTagLabel;
 
     @UiField
     ListBox operationCombo;
@@ -80,14 +102,34 @@ public class EditAnnotationsViewImpl extends Composite implements EditAnnotation
     @UiField
     HTMLPanel langTagGroup;
 
+    private final Messages messages;
+
     @Inject
     public EditAnnotationsViewImpl(AnnotationSimpleMatchingCriteriaViewImpl view,
                                    PrimitiveDataEditorImpl newPropertyField,
-                                   DefaultLanguageEditor newLangTagField) {
+                                   DefaultLanguageEditor newLangTagField,
+                                   Messages messages) {
         this.criteriaView = Preconditions.checkNotNull(view);
         this.newPropertyField = newPropertyField;
         this.newLangTagField = newLangTagField;
+        this.messages = Preconditions.checkNotNull(messages);
         initWidget(ourUiBinder.createAndBindUi(this));
+        editOperationLabel.setText(messages.bulkop_editOperation());
+        operationCombo.setItemText(0, messages.bulkop_replaceMatchedAnnotations());
+        operationCombo.setItemText(1, messages.bulkop_deleteMatchedAnnotations());
+        operationCombo.setItemText(2, messages.bulkop_augmentMatchedAnnotations());
+        newPropertyLabel.setText(messages.bulkop_newProperty());
+        matchedPropertyRadio.setText(messages.bulkop_matchedProperty());
+        otherPropertyRadio.setText(messages.bulkop_otherProperty());
+        specifyPropertyLabel.setText(messages.bulkop_specifyProperty());
+        newValueLabel.setText(messages.bulkop_newValue());
+        matchedValueRadio.setText(messages.bulkop_matchedValue());
+        otherValueRadio.setText(messages.bulkop_otherValue());
+        specifyValueLabel.setText(messages.bulkop_specifyValue());
+        newLangTagLabel.setText(messages.bulkop_newLangTag());
+        matchedLangTagRadio.setText(messages.bulkop_matchedLangTag());
+        otherLangTagRadio.setText(messages.bulkop_otherLangTag());
+        specifyLangTagLabel.setText(messages.bulkop_specifyLangTag());
         updateOperationSection();
     }
 

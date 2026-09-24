@@ -6,6 +6,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.PasswordTextBox;
+import com.google.gwt.user.client.ui.Label;
+import edu.stanford.bmir.protege.web.client.Messages;
 import edu.stanford.bmir.protege.web.client.library.dlg.HasRequestFocus;
 import edu.stanford.bmir.protege.web.resources.WebProtegeClientBundle;
 
@@ -25,6 +27,17 @@ public class ChangePasswordViewImpl extends Composite implements ChangePasswordV
 
     private static ChangePasswordViewImplUiBinder ourUiBinder = GWT.create(ChangePasswordViewImplUiBinder.class);
 
+    private static final Messages MESSAGES = GWT.create(Messages.class);
+
+
+    @UiField
+    protected Label currentPasswordLabel;
+
+    @UiField
+    protected Label newPasswordLabel;
+
+    @UiField
+    protected Label confirmNewPasswordLabel;
 
     @UiField
     protected PasswordTextBox oldPasswordField;
@@ -41,6 +54,9 @@ public class ChangePasswordViewImpl extends Composite implements ChangePasswordV
         WebProtegeClientBundle.BUNDLE.style().ensureInjected();
         HTMLPanel rootElement = ourUiBinder.createAndBindUi(this);
         initWidget(rootElement);
+        currentPasswordLabel.setText(MESSAGES.password_currentPassword());
+        newPasswordLabel.setText(MESSAGES.password_newPassword());
+        confirmNewPasswordLabel.setText(MESSAGES.password_confirmNewPassword());
     }
 
     @Override

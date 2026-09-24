@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.dispatch;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException;
 import com.google.gwt.user.client.rpc.InvocationException;
@@ -15,6 +17,8 @@ import javax.inject.Inject;
  * 20/02/15
  */
 public class DispatchServiceCallback<T> {
+
+    private static final Messages MESSAGES = GWT.create(Messages.class);
 
     private DispatchErrorMessageDisplay errorMessageDisplay;
 
@@ -122,7 +126,7 @@ public class DispatchServiceCallback<T> {
     }
 
     protected String getErrorMessageTitle() {
-        return "Error";
+        return MESSAGES.error();
     }
 
     protected String getErrorMessage(Throwable throwable) {

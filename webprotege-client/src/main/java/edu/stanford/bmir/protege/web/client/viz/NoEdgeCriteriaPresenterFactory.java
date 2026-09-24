@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.viz;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import edu.stanford.bmir.protege.web.client.match.CriteriaPresenter;
 import edu.stanford.bmir.protege.web.client.match.CriteriaPresenterFactory;
 import edu.stanford.bmir.protege.web.shared.viz.NoEdgeCriteria;
@@ -19,15 +21,18 @@ public class NoEdgeCriteriaPresenterFactory implements CriteriaPresenterFactory<
 
     private final Provider<NoEdgeCriteriaPresenter> presenterProvider;
 
+    private final Messages messages;
+
     @Inject
-    public NoEdgeCriteriaPresenterFactory(Provider<NoEdgeCriteriaPresenter> presenterProvider) {
+    public NoEdgeCriteriaPresenterFactory(Provider<NoEdgeCriteriaPresenter> presenterProvider, Messages messages) {
         this.presenterProvider = checkNotNull(presenterProvider);
+        this.messages = checkNotNull(messages);
     }
 
     @Nonnull
     @Override
     public String getDisplayName() {
-        return "No Edge";
+        return messages.viz_noEdge();
     }
 
     @Nonnull

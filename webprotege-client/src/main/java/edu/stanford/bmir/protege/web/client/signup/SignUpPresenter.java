@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.signup;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
@@ -51,6 +53,8 @@ public class SignUpPresenter implements Presenter {
     @Nonnull
     private final MessageBox messageBox;
 
+    private final Messages messages;
+
     private Optional<Place> continueTo = Optional.empty();
 
     private Optional<Place> backTo = Optional.empty();
@@ -63,7 +67,8 @@ public class SignUpPresenter implements Presenter {
                            @Nonnull SignUpView view,
                            @Nonnull ForbiddenView forbiddenView,
                            @Nonnull PlaceController placeController,
-                           @Nonnull MessageBox messageBox, DispatchErrorMessageDisplay errorDisplay) {
+                           @Nonnull MessageBox messageBox, DispatchErrorMessageDisplay errorDisplay,
+                           Messages messages) {
         this.dispatchServiceManager = checkNotNull(dispatchServiceManager);
         this.view = checkNotNull(view);
         this.forbiddenView = checkNotNull(forbiddenView);
@@ -71,6 +76,7 @@ public class SignUpPresenter implements Presenter {
         this.loggedInUserManager = checkNotNull(loggedInUserManager);
         this.messageBox = messageBox;
         this.errorDisplay = errorDisplay;
+        this.messages = checkNotNull(messages);
         view.setCancelHandler(event -> handleCancel());
         view.setSignUpHandler(event -> handleSignUp());
     }
@@ -152,8 +158,8 @@ public class SignUpPresenter implements Presenter {
         executor.execute(userId, data.getEmailAddress(), data.getPassword(), new DispatchServiceCallback<CreateUserAccountResult>(errorDisplay) {
             @Override
             public void handleSuccess(CreateUserAccountResult createUserAccountResult) {
-                messageBox.showMessage("Registration complete",
-                        "You have successfully registered.");
+                messageBox.showMessage(messages.signup_registrationComplete_title(),
+                        messages.signup_successfullyRegistered());
                 goToNextPlace();
             }
 
@@ -161,23 +167,18 @@ public class SignUpPresenter implements Presenter {
             public void handleExecutionException(Throwable cause) {
                 if (cause instanceof UserNameAlreadyExistsException) {
                     String username = ((UserNameAlreadyExistsException) cause).getUsername();
-                    messageBox.showAlert("User name already taken", "A user named "
-                            + username
-                            + " is already registered.  Please choose another name.");
+                    messageBox.showAlert(messages.signup_userNameAlreadyTaken_title(), messages.signup_userNameAlreadyTaken_message(username));
                 }
                 else if (cause instanceof UserEmailAlreadyExistsException) {
                     String email = ((UserEmailAlreadyExistsException) cause).getEmailAddress();
-                    messageBox.showAlert("Email address already taken", "The email address "
-                            + email
-                            + " is already taken.  Please choose a different email address.");
+                    messageBox.showAlert(messages.signup_emailAddressAlreadyTaken_title(), messages.signup_emailAddressAlreadyTaken_message(email));
                 }
                 else if (cause instanceof UserRegistrationException) {
                     messageBox.showAlert(cause.getMessage());
                 }
                 else {
-                    messageBox.showAlert("Error registering account",
-                            "There was a problem registering the specified user account.  " +
-                                    "Please contact administrator.");
+                    messageBox.showAlert(messages.signup_errorRegisteringAccount_title(),
+                            messages.signup_errorRegisteringAccount_message());
                 }
             }
         });

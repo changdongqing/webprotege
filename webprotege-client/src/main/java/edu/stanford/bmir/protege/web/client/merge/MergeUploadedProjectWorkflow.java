@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.merge;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.user.client.Window;
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchErrorMessageDisplay;
@@ -42,10 +44,13 @@ public class MergeUploadedProjectWorkflow {
     @Nonnull
     private final ProgressDisplay progressDisplay;
 
+    private final Messages messages;
+
     @Inject
-    public MergeUploadedProjectWorkflow(@Nonnull DispatchServiceManager dispatchServiceManager, MessageBox messageBox, @Nonnull DispatchErrorMessageDisplay errorDisplay, @Nonnull ProgressDisplay progressDisplay) {
+    public MergeUploadedProjectWorkflow(@Nonnull DispatchServiceManager dispatchServiceManager, MessageBox messageBox, Messages messages, @Nonnull DispatchErrorMessageDisplay errorDisplay, @Nonnull ProgressDisplay progressDisplay) {
         this.dispatchServiceManager = checkNotNull(dispatchServiceManager);
         this.messageBox = checkNotNull(messageBox);
+        this.messages = checkNotNull(messages);
         this.errorDisplay = checkNotNull(errorDisplay);
         this.progressDisplay = checkNotNull(progressDisplay);
     }
@@ -59,12 +64,12 @@ public class MergeUploadedProjectWorkflow {
         dispatchServiceManager.execute(new ComputeProjectMergeAction(projectId, uploadedProjectDocumentId), new DispatchServiceCallbackWithProgressDisplay<ComputeProjectMergeResult>(errorDisplay, progressDisplay) {
             @Override
             public String getProgressDisplayTitle() {
-                return "Uploading and merging ontologies";
+                return messages.merge_progressUploadingAndMerging();
             }
 
             @Override
             public String getProgressDisplayMessage() {
-                return "Uploading ontologies and computing the diff.  Please wait.";
+                return messages.merge_progressComputingDiff();
             }
 
             @Override
@@ -99,17 +104,17 @@ public class MergeUploadedProjectWorkflow {
 
             @Override
             public String getProgressDisplayTitle() {
-                return "Merging ontologies";
+                return messages.merge_progressMerging();
             }
 
             @Override
             public String getProgressDisplayMessage() {
-                return "Applying changes to merge ontologies.  Please wait.";
+                return messages.merge_progressApplyingMergeChanges();
             }
 
             @Override
             public void handleSuccess(MergeUploadedProjectResult mergeUploadedProjectResult) {
-                messageBox.showMessage("The uploaded ontologies were successfully merged into the project");
+                messageBox.showMessage(messages.merge_uploadedMergedSuccessfully());
             }
         });
     }

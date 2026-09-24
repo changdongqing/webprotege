@@ -3,6 +3,7 @@ package edu.stanford.bmir.protege.web.client.match;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.Label;
+import edu.stanford.bmir.protege.web.client.Messages;
 import edu.stanford.bmir.protege.web.shared.match.criteria.Criteria;
 
 import javax.annotation.Nonnull;
@@ -25,13 +26,21 @@ public abstract class SelectableCriteriaTypePresenter<C extends Criteria> implem
     private final SelectableCriteriaTypeView view;
 
     @Nonnull
+    private final Messages messages;
+
+    @Nonnull
     private final List<CriteriaPresenterFactory<? extends C>> presenterFactories = new ArrayList<>();
 
     @Nonnull
     private final Map<String, CriteriaPresenter<? extends C>> presenterMap = new HashMap<>();
 
     public SelectableCriteriaTypePresenter(@Nonnull SelectableCriteriaTypeView view) {
+        this(view, GWT.create(Messages.class));
+    }
+
+    public SelectableCriteriaTypePresenter(@Nonnull SelectableCriteriaTypeView view, @Nonnull Messages messages) {
         this.view = checkNotNull(view);
+        this.messages = checkNotNull(messages);
     }
 
     @Override
@@ -109,7 +118,7 @@ public abstract class SelectableCriteriaTypePresenter<C extends Criteria> implem
             return Optional.of(presenter);
         }
         else {
-            view.setWidget(new Label("Nothing to select"));
+            view.setWidget(new Label(messages.select_nothingToSelect()));
             return Optional.empty();
         }
     }

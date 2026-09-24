@@ -1,7 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String acceptLanguage = request.getHeader("Accept-Language");
+    boolean zh = acceptLanguage != null && acceptLanguage.toLowerCase().startsWith("zh");
+%>
 <html>
 <head>
-    <title>Forbidden</title>
+    <title><%= zh ? "禁止访问" : "Forbidden" %></title>
     <link rel="stylesheet" href="css/WebProtege.css">
     <style type="text/css">
         .main {
@@ -24,7 +28,7 @@
 
 <div class="main">
     <img src="img/protege-blender-monochrome.png" alt="Forbidden" style="width: 100px; position: relative; left: -10px;">
-    <h1>Forbidden</h1>
+    <h1><%= zh ? "禁止访问" : "Forbidden" %></h1>
 </div>
 </body>
 </html>

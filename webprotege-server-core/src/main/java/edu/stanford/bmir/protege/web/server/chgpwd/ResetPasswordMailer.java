@@ -3,6 +3,8 @@ package edu.stanford.bmir.protege.web.server.chgpwd;
 import edu.stanford.bmir.protege.web.server.app.ApplicationNameSupplier;
 import edu.stanford.bmir.protege.web.server.app.PlaceUrl;
 import edu.stanford.bmir.protege.web.server.filemanager.FileContents;
+import edu.stanford.bmir.protege.web.server.i18n.ServerMessages;
+import edu.stanford.bmir.protege.web.server.inject.MailProperties;
 import edu.stanford.bmir.protege.web.server.mail.MessagingExceptionHandler;
 import edu.stanford.bmir.protege.web.server.mail.SendMailImpl;
 import edu.stanford.bmir.protege.web.server.templates.TemplateEngine;
@@ -13,7 +15,11 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.Properties;
 
 import static java.util.Collections.singletonList;
 
@@ -36,17 +42,45 @@ public class ResetPasswordMailer {
 
     private final ApplicationNameSupplier applicationNameSupplier;
 
+    private final Properties mailProperties;
+
     @Inject
     public ResetPasswordMailer(SendMailImpl sendMailImpl,
                                TemplateEngine templateEngine,
                                @PasswordResetEmailTemplate FileContents templateFile,
                                PlaceUrl placeUrl,
-                               ApplicationNameSupplier applicationNameSupplier) {
+                               ApplicationNameSupplier applicationNameSupplier,
+                               @MailProperties Properties mailProperties) {
         this.sendMailImpl = sendMailImpl;
         this.templateEngine = templateEngine;
         this.templateFile = templateFile;
         this.placeUrl = placeUrl;
         this.applicationNameSupplier = applicationNameSupplier;
+        this.mailProperties = mailProperties;
+    }
+
+    private boolean isChineseMailLocale() {
+        return "zh".equalsIgnoreCase(mailProperties.getProperty("mail.locale", "en").trim());
+    }
+
+    private String getSubject() {
+        return isChineseMailLocale()
+               ? ServerMessages.getChinese("server.mail.passwordResetSubject", SUBJECT)
+               : SUBJECT;
+    }
+
+    private String getTemplateContents() {
+        if (!isChineseMailLocale()) {
+            return templateFile.getContents();
+        }
+        try (InputStream in = ResetPasswordMailer.class.getResourceAsStream("/templates/password-reset-email-template.zh.html")) {
+            if (in != null) {
+                return new String(in.readAllBytes(), StandardCharsets.UTF_8);
+            }
+        } catch (IOException e) {
+            logger.info("The Chinese password reset email template could not be loaded. Falling back to the default template.");
+        }
+        return templateFile.getContents();
     }
 
     public void sendEmail(@Nonnull UserId userId,
@@ -61,11 +95,10 @@ public class ResetPasswordMailer {
                                       .with("pwd", pwd)
                                       .build();
 
-        String template = templateFile.getContents();
-        String emailBody = templateEngine.populateTemplate(template, objects);
+        String emailBody = templateEngine.populateTemplate(getTemplateContents(), objects);
 
         sendMailImpl.sendMail(singletonList(emailAddress),
-                              SUBJECT,
+                              getSubject(),
                               emailBody,
                               ex -> {
                                   logger.info("A password reset email could not be sent to user {} at {}.",

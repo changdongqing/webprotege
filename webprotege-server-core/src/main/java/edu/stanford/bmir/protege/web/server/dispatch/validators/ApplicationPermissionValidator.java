@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.server.dispatch.validators;
 
+import edu.stanford.bmir.protege.web.server.i18n.ServerMessages;
+
 import edu.stanford.bmir.protege.web.server.access.AccessManager;
 import edu.stanford.bmir.protege.web.server.access.ApplicationResource;
 import edu.stanford.bmir.protege.web.server.dispatch.RequestValidationResult;
@@ -48,7 +50,8 @@ public class ApplicationPermissionValidator implements RequestValidator {
             return RequestValidationResult.getValid();
         }
         else {
-            return RequestValidationResult.getInvalid("You do not have permission for " + actionId.getId());
+            return RequestValidationResult.getInvalid(ServerMessages.get("server.noPermissionForAction",
+                    "You do not have permission for {0}", actionId.getId()));
         }
     }
 }

@@ -1,5 +1,8 @@
 package edu.stanford.bmir.protege.web.client.obo;
 
+import com.google.gwt.core.client.GWT;
+
+import edu.stanford.bmir.protege.web.client.Messages;
 import edu.stanford.bmir.protege.web.client.editor.ValueListFlexEditorImpl;
 import edu.stanford.bmir.protege.web.client.primitive.PrimitiveDataEditorImpl;
 import edu.stanford.bmir.protege.web.shared.obo.OBORelationship;
@@ -15,11 +18,14 @@ import javax.inject.Provider;
  */
 public class OBOTermRelationshipEditor extends ValueListFlexEditorImpl<OBORelationship> {
 
+    private static final Messages MESSAGES = GWT.create(Messages.class);
+
     @Inject
     public OBOTermRelationshipEditor(final Provider<PrimitiveDataEditorImpl> primitiveDataEditorProvider) {
         super(() -> new OBORelationshipEditorImpl(
                 primitiveDataEditorProvider.get(),
-                primitiveDataEditorProvider.get()));
+                primitiveDataEditorProvider.get(),
+                MESSAGES));
     }
 
 }

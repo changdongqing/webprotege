@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.merge_add;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchErrorMessageDisplay;
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchServiceCallbackWithProgressDisplay;
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchServiceManager;
@@ -32,13 +34,17 @@ public class ExistingOntologyMergeProjectWorkflow {
     @Nonnull
     private final ProgressDisplay progressDisplay;
 
+    private final Messages messages;
+
     @Inject
     public ExistingOntologyMergeProjectWorkflow(@Nonnull DispatchServiceManager dispatchServiceManager,
                                                 @Nonnull MessageBox messageBox,
+                                           Messages messages,
                                                 @Nonnull DispatchErrorMessageDisplay errorDisplay,
                                                 @Nonnull ProgressDisplay progressDisplay) {
         this.dispatchServiceManager = dispatchServiceManager;
         this.messageBox = messageBox;
+        this.messages = messages;
         this.errorDisplay = errorDisplay;
         this.progressDisplay = progressDisplay;
     }
@@ -65,17 +71,17 @@ public class ExistingOntologyMergeProjectWorkflow {
         dispatchServiceManager.execute(new ExistingOntologyMergeAddAction(projectId, documentId, selectedOntologies, targetOntology), new DispatchServiceCallbackWithProgressDisplay<ExistingOntologyMergeAddResult>(errorDisplay, progressDisplay) {
             @Override
             public String getProgressDisplayTitle() {
-                return "Uploading and Merging Ontologies";
+                return messages.merge_progressUploadingAndMerging();
             }
 
             @Override
             public String getProgressDisplayMessage() {
-                return "Merging selected ontologies into existing ontology. Please wait.";
+                return messages.merge_progressMergingIntoExisting();
             }
 
             @Override
             public void handleSuccess(ExistingOntologyMergeAddResult result){
-                messageBox.showMessage("The uploaded ontologies were successfully merged into the project");
+                messageBox.showMessage(messages.merge_uploadedMergedSuccessfully());
             }
         });
     }

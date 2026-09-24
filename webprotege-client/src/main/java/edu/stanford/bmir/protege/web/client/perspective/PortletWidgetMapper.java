@@ -3,6 +3,7 @@ package edu.stanford.bmir.protege.web.client.perspective;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
+import edu.stanford.bmir.protege.web.client.Messages;
 import edu.stanford.bmir.protege.web.client.portlet.*;
 import edu.stanford.bmir.protege.web.shared.PortletId;
 import edu.stanford.bmir.protege.web.shared.event.WebProtegeEventBus;
@@ -44,15 +45,19 @@ public class PortletWidgetMapper implements WidgetMapper {
 
     private final Provider<WebProtegeEventBus> eventBusProvider;
 
+    private final Messages messages;
+
     private Consumer<TerminalNode> nodePropertiesChangedHandler = node -> {};
 
     @Inject
     public PortletWidgetMapper(@Nonnull PortletFactory portletFactory,
                                Provider<PortletUi> portletUiProvider,
-                               Provider<WebProtegeEventBus> eventBusProvider) {
+                               Provider<WebProtegeEventBus> eventBusProvider,
+                               Messages messages) {
         this.portletFactory = portletFactory;
         this.portletUiProvider = portletUiProvider;
         this.eventBusProvider = eventBusProvider;
+        this.messages = checkNotNull(messages);
     }
 
 
@@ -97,7 +102,7 @@ public class PortletWidgetMapper implements WidgetMapper {
 
         }
         else {
-            viewHolder = new ViewHolder(new Label("No view class specified"), NodeProperties.emptyNodeProperties());
+            viewHolder = new ViewHolder(new Label(messages.perspective_noViewClassSpecified()), NodeProperties.emptyNodeProperties());
         }
         viewHolder.setCloseable(viewsCloseable);
         nodeId2ViewHolderMap.put(terminalNode.getNodeId(), viewHolder);

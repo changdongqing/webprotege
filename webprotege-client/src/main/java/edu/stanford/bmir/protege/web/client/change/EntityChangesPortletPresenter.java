@@ -1,5 +1,9 @@
 package edu.stanford.bmir.protege.web.client.change;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
+import com.google.gwt.core.client.GWT;
+
 import edu.stanford.bmir.protege.web.client.lang.DisplayNameRenderer;
 import edu.stanford.bmir.protege.web.client.permissions.LoggedInUserProjectPermissionChecker;
 import edu.stanford.bmir.protege.web.client.portlet.AbstractWebProtegePortletPresenter;
@@ -24,7 +28,7 @@ import static edu.stanford.bmir.protege.web.shared.permissions.PermissionsChange
         tooltip = "Displays a list of project changes for the selected entity.")
 public class EntityChangesPortletPresenter extends AbstractWebProtegePortletPresenter {
 
-    private static final String FORBIDDEN_MESSAGE = "You do not have permission to view changes for this project";
+    private static final Messages MESSAGES = GWT.create(Messages.class);
 
     private RevisionNumber lastRevisionNumber = RevisionNumber.getRevisionNumber(0);
 
@@ -48,7 +52,7 @@ public class EntityChangesPortletPresenter extends AbstractWebProtegePortletPres
                                         ProjectChangedEvent.TYPE, event -> handleProjectChanged(event));
         eventBus.addApplicationEventHandler(ON_PERMISSIONS_CHANGED, event -> updateDisplayForSelectedEntity());
         portletUi.setWidget(presenter.getView().asWidget());
-        portletUi.setForbiddenMessage(FORBIDDEN_MESSAGE);
+        portletUi.setForbiddenMessage(MESSAGES.change_viewChangesForbidden());
         setDisplaySelectedEntityNameAsSubtitle(true);
         updateDisplayForSelectedEntity();
     }

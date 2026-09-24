@@ -6,6 +6,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RadioButton;
+import com.google.gwt.user.client.ui.Label;
+import edu.stanford.bmir.protege.web.client.Messages;
 import edu.stanford.bmir.protege.web.client.library.dlg.HasInitialFocusable;
 import edu.stanford.bmir.protege.web.client.library.dlg.HasRequestFocus;
 
@@ -15,6 +17,11 @@ public class SelectOptionViewImpl extends Composite implements SelectOptionView,
     }
 
     private static SelectOptionViewImplUiBinder ourUiBinder = GWT.create(SelectOptionViewImplUiBinder.class);
+
+    private static final Messages MESSAGES = GWT.create(Messages.class);
+
+    @UiField
+    protected Label selectionPromptLabel;
 
     @UiField
     protected RadioButton radioButton1;
@@ -27,6 +34,9 @@ public class SelectOptionViewImpl extends Composite implements SelectOptionView,
 //        radioButton2 = new RadioButton("Group", "Merge into existing ontology");
         MergeAddClientBundle.BUNDLE.style().ensureInjected();
         initWidget(ourUiBinder.createAndBindUi(this));
+        selectionPromptLabel.setText(MESSAGES.merge_selectHowToMerge());
+        radioButton1.setText(MESSAGES.merge_mergeIntoNewOntology());
+        radioButton2.setText(MESSAGES.merge_mergeIntoExistingOntology());
         radioButton1.setValue(true);
         radioButton2.setValue(false);
     }

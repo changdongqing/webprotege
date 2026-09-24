@@ -3,6 +3,7 @@ package edu.stanford.bmir.protege.web.client.search;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
+import edu.stanford.bmir.protege.web.client.Messages;
 import edu.stanford.bmir.protege.web.client.action.AbstractUiAction;
 import edu.stanford.bmir.protege.web.client.action.UIAction;
 import edu.stanford.bmir.protege.web.client.form.LanguageMapCurrentLocaleMapper;
@@ -37,17 +38,22 @@ public class EntitySearchFilterTokenFieldPresenter {
     @Nonnull
     private final EntitySearchFilterTokenFieldView view;
 
+    @Nonnull
+    private final Messages messages;
+
     private SearchFiltersChangedHandler searchFiltersChangedHandler = () -> {};
 
     @Inject
     public EntitySearchFilterTokenFieldPresenter(@Nonnull TokenFieldPresenter<EntitySearchFilter> tokenFieldPresenter,
                                                  @Nonnull EntitySearchFilterService searchFilterService,
                                                  @Nonnull LanguageMapCurrentLocaleMapper currentLocaleMapper,
-                                                 @Nonnull EntitySearchFilterTokenFieldView view) {
+                                                 @Nonnull EntitySearchFilterTokenFieldView view,
+                                                 @Nonnull Messages messages) {
         this.tokenFieldPresenter = checkNotNull(tokenFieldPresenter);
         this.searchFilterService = checkNotNull(searchFilterService);
         this.currentLocaleMapper = checkNotNull(currentLocaleMapper);
         this.view = checkNotNull(view);
+        this.messages = checkNotNull(messages);
     }
 
     public void start(@Nonnull AcceptsOneWidget container) {
@@ -64,7 +70,7 @@ public class EntitySearchFilterTokenFieldPresenter {
                                  });
                              });
                 if(popupMenu.isEmpty()) {
-                    UIAction action = new AbstractUiAction("No remaining filters") {
+                    UIAction action = new AbstractUiAction(messages.search_noRemainingFilters()) {
                         @Override
                         public void execute() {
 
@@ -79,7 +85,7 @@ public class EntitySearchFilterTokenFieldPresenter {
         container.setWidget(view);
         tokenFieldPresenter.start(view.getTokenFieldContainer());
         tokenFieldPresenter.setTokensChangedHandler(tokens -> searchFiltersChangedHandler.handleSearchFiltersChanged());
-        tokenFieldPresenter.setPlaceholder("Add filter");
+        tokenFieldPresenter.setPlaceholder(messages.search_addFilter());
     }
 
     @Nonnull

@@ -1,0 +1,430 @@
+Messages	about	About	12	
+Messages	back	Back	16	
+Messages	perspective.tab	tab	20	
+Messages	perspective.tabs	Tabs	24	
+Messages	perspective.perspective_addTab	Add tab	28	
+Messages	change.authored	authored	33	
+Messages	change.changes	changes	38	
+Messages	change.changesOn	Changes on	43	
+Messages	change.downloadRevision	Download revision	48	
+Messages	change.moreChangesNotShownHere	more changes not shown here	53	
+Messages	change.permissionDenied	You do not have permission to view changes in this	58	
+Messages	change.plus	Plus	63	
+Messages	change.revert	Revert	68	
+Messages	change.revertChangesInRevision	Revert changes in revision	73	
+Messages	change.revertChangesInRevisionQuestion	Do you want to revert the changes in this revision?	78	
+Messages	change.revertChangesQuestion	Revert Changes?	83	
+Messages	change.revertSuccess	Changes in revision {0} have been reverted	87	
+Messages	changeEmailAddress	Change Email Address	91	
+Messages	changePassword	Change Password	96	
+Messages	changesByEntity	Changes by Entity	101	
+Messages	classIri	Class IRI	106	
+Messages	classes	Classes	111	
+Messages	comments	Comments	116	
+Messages	comments.by	by	121	
+Messages	comments.comment	Comment	126	
+Messages	comments.commentedEntities	Commented entities	131	
+Messages	comments.lastComment	Last comment	136	
+Messages	comments.resolved	resolved	141	
+Messages	comments.unresolved	unresolved	146	
+Messages	create	Create	151	
+Messages	createEntityInstructions	Enter one name per line (press CTRL+ENTER to accept and close panel)	156	
+Messages	createProject	Create New Project	161	
+Messages	add	Add	165	
+Messages	delete	Delete	169	
+Messages	delete.entity.msg	Are you sure you want to delete the {0} <strong>{1}</strong>?	174	
+Messages	delete.entity.title	Delete {0}	179	
+Messages	deleteComment	Delete	184	
+Messages	deleteCommentConfirmationBoxText	Are you sure that you want to delete this comment?  This cannot be undone.	189	
+Messages	deleteCommentConfirmationBoxTitle	Delete Comment?	194	
+Messages	dialog.apply	Apply	199	
+Messages	dialog.cancel	Cancel	204	
+Messages	dialog.close	Close	209	
+Messages	dialog.no	No	214	
+Messages	dialog.ok	OK	219	
+Messages	dialog.select	Select	224	
+Messages	dialog.yes	Yes	229	
+Messages	directLink	Direct Link	234	
+Messages	discussionThread.DisplayResolvedThreads	Display resolved threads	239	
+Messages	discussionThread.Reopen	Re-open	244	
+Messages	discussionThread.Resolve	Resolve	249	
+Messages	discussionThread.ViewingForbidden	You do not have permission to view comments in this project	254	
+Messages	download	Download	259	
+Messages	editComment	Edit	264	
+Messages	enterSearchStringToFilterList	Enter search string to filter list	269	
+Messages	error	Error	274	
+Messages	error.anErrorHasOccurred	An error has occurred.  Please refresh your browser and try again.	279	
+Messages	error.connectionError.msg	WebProtégé cannot connect to the server.  Please check your network connection.	284	
+Messages	error.connectionError.title	Connection Error	289	
+Messages	error.general	An error has occurred.  Please refresh your browser and try again.	294	
+Messages	error.permissionError.msg	You do not have permission to carry out the specified action.	299	
+Messages	error.permissionError.title	Permission Denied	304	
+Messages	error.refreshBrowser	Please refresh your browser	309	
+Messages	error.serverError	Server Error	314	
+Messages	error.statusCode	Status Code	319	
+Messages	error.upgraded	WebProtégé has been updated.  Please empty your browser caches and reload your browser.	324	
+Messages	error.webProtegeHasEncounteredAnErrorPleaseTryAgain	WebProtégé has encountered an error.  Please try again.	329	
+Messages	forbidden	Forbidden	334	
+Messages	forgotUserNameOrPassword	Forgot username or password	339	
+Messages	editProjectForms	Forms	343	
+Messages	frame.annotations	Annotations	348	
+Messages	frame.classes	Parents	353	
+Messages	frame.domain	Domain	358	
+Messages	frame.characteristics	Characteristics	362	
+Messages	frame.enterAClassName	Enter a class name	367	
+Messages	frame.enterADatatype	Enter a datatype name	372	
+Messages	frame.enterIndividualName	Enter an individual name	377	
+Messages	frame.enterProperty	Enter property	382	
+Messages	frame.enterValue	Enter value	387	
+Messages	frame.functional	Functional	392	
+Messages	frame.lang	lang	397	
+Messages	frame.range	Range	402	
+Messages	frame.relationships	Relationships	407	
+Messages	frame.sameIndividual	Same As	412	
+Messages	frame.singleValued	Single valued	417	
+Messages	frame.transitive	Transitive	422	
+Messages	frame.types	Types	427	
+Messages	help	Help	432	
+Messages	hierarchy.annotationproperties	Annotation Properties	437	
+Messages	hierarchy.dataproperties	Data Properties	442	
+Messages	hierarchy.objectproperties	Object Properties	447	
+Messages	history	History	452	
+Messages	home	Home	457	
+Messages	individuals	Individuals	462	
+Messages	instance	instance	467	
+Messages	iri	IRI	472	
+Messages	lastModified	Last modified	477	
+Messages	lastOpened	Last opened	482	
+Messages	lastUpdated	Last updated	487	
+Messages	login.enterPassword	Please enter your password.	492	
+Messages	login.enterUserName	Please enter your user name.	497	
+Messages	login.error	Unable to log in.  User name or password is incorrect.	502	
+Messages	markdownSupported	Markdown supported	507	
+Messages	moveToTrash	Move to Trash	512	
+Messages	newEntitySettings	New Entity Settings	517	
+Messages	newEntitySettings.digitCount	Digit count	522	
+Messages	newEntitySettings.iriPrefix	IRI Prefix	527	
+Messages	newEntitySettings.iriSuffix	IRI Suffix	532	
+Messages	newEntitySettings.oboId	Auto-generated OBO Style Id	537	
+Messages	newEntitySettings.spaces	Spaces	542	
+Messages	newEntitySettings.spaces.collapseAndTransformToCamelCase	Collapse and transform to camel case	547	
+Messages	newEntitySettings.spaces.replaceWithDashes	Replace with dashes	552	
+Messages	newEntitySettings.spaces.replaceWithUnderscores	Replace with underscores	557	
+Messages	newEntitySettings.suppliedName	Supplied name	562	
+Messages	newEntitySettings.userSpecificRanges	User specific ranges	567	
+Messages	newEntitySettings.uuid	Auto-generated Universally Unique Id (UUID)	572	
+Messages	newTopic	New topic	577	
+Messages	nothingSelected	Nothing selected	582	
+Messages	open	Open	587	
+Messages	openInNewWindow	Open in New Window	592	
+Messages	ownedByMe	Owned by Me	597	
+Messages	owner	Owner	602	
+Messages	pagination.Page	Page	607	
+Messages	pagination.next	Next	612	
+Messages	pagination.of	of	617	
+Messages	pagination.prev	Prev	622	
+Messages	password	Password	627	
+Messages	password.reset.error.generic.msg	Password reset error	632	
+Messages	password.reset.error.generic.submsg	An error occurred. Please contact the administrator.	637	
+Messages	password.reset.error.invalidemail.msg	Invalid email address.	642	
+Messages	password.reset.error.invalidemail.submsg	The email address that you supplied is not valid.  Your password has not been reset.	647	
+Messages	password.reset.success.msg	Your password has been reset	652	
+Messages	password.reset.success.submsg	A temporary password has been sent to your email address.	657	
+Messages	password.resetPassword	Reset Password	662	
+Messages	plus	Plus	666	
+Messages	project	Project	671	
+Messages	projectDescription	Project description	676	
+Messages	projectFeed	Project Feed	681	
+Messages	projectHistory	Project History	686	
+Messages	projectName	Project name	691	
+Messages	projectNameMissingErrorMessage	Please enter a project name	696	
+Messages	projectSettings.description	Description	701	
+Messages	projectSettings.language	Language	705	
+Messages	projectSettings.language.helpText	Enter a language tag for labelling new entities and to use as the primary display language.  <em>Leave empty for no language tag</em>.	709	
+Messages	projectSettings.owlimport.helpText	Any owl:import that cannot be loaded will be silently ignored	713	
+Messages	projectSettings.displayName	Display name	718	
+Messages	projectSettings.headerSection.title	Project Settings	723	
+Messages	projectSettings.mainSettings	Main Settings	728	
+Messages	projectSettings.payloadUrls	Payload URLs	733	
+Messages	projectSettings.slackIntegration	Slack Integration	738	
+Messages	projectSettings.slackWebHookUrl	Slack Webhook URL	743	
+Messages	projectSettings.slackWebHookHelp	Enter a URL for an incoming Slack Webhook (This is generated by Slack for a particular workspace\n and channel.  Please see the Slack Help pages for more information).  When comments are posted on entities Slack users\n will also receive notifications via Slack.	747	
+Messages	projectSettings.title	Project Settings	751	
+Messages	prefixes.title	Prefixes	755	
+Messages	prefixes.project.title	Project Prefixes	759	
+Messages	prefixes.prefixname	Prefix name	763	
+Messages	prefixes.prefix	Prefix	767	
+Messages	prefixes.edit	Project Prefixes	771	
+Messages	projectSettings.webHooks	Web Hooks	778	
+Messages	projects	Projects	783	
+Messages	properties	Properties	788	
+Messages	propertyIri	Property IRI	793	
+Messages	refresh	Refresh	798	
+Messages	refreshTree	Refresh Tree	803	
+Messages	replyToComment	Reply	808	
+Messages	search	Search	813	
+Messages	search.class	Search for Class	818	
+Messages	search.hint	Enter text to search for (multi-word search supported)	823	
+Messages	search.help	Separate search words by spaces to perform multi-word search	827	
+Messages	share	Share	832	
+Messages	sharedWithMe	Shared with Me	837	
+Messages	sharing.anyoneWithTheLinkCan	Anyone with the link can	842	
+Messages	sharing.comment	Comment	847	
+Messages	sharing.edit	Edit	852	
+Messages	sharing.linkSharingEnabled	Link sharing enabled	857	
+Messages	sharing.manage	Manage	862	
+Messages	sharing.shareWithSpecificPeople	Share with specific people	867	
+Messages	sharing.settings.loading	Loading sharing settings	871	
+Messages	sharing.settings.title	Sharing settings	875	
+Messages	sharing.settings.updating	Updating sharing settings	879	
+Messages	sharing.signInRequired	Sign-in Required	883	
+Messages	sharing.view	View	888	
+Messages	showDirectLink	Show Direct Link	893	
+Messages	showIri	Show IRI	898	
+Messages	showing	showing	903	
+Messages	signIn	Sign In	908	
+Messages	signInToContinue	Please sign in to continue	913	
+Messages	signOut	Sign Out	918	
+Messages	signUpForAccount	Sign up for account	923	
+Messages	sortByEntity	Sort by Entity	928	
+Messages	sortByLastModified	Sort by Last Modified	933	
+Messages	sortByLastOpened	Sort by Last Opened	938	
+Messages	sortByLastUpdated	Sort by Last Updated	943	
+Messages	sortByOwner	Sort by Owner	948	
+Messages	navigation.goToEntity	Go to entity	952	
+Messages	sortByProjectName	Sort by Project Name	957	
+Messages	startNewCommentThread	Start new thread	962	
+Messages	time.daysAgo	days ago	967	
+Messages	time.hoursAgo	hours ago	972	
+Messages	time.lessThanOneMinuteAgo	Less than one minute ago	977	
+Messages	time.minutesAgo	minutes ago	982	
+Messages	trash	Trash	987	
+Messages	tree.clearPruning	Clear pruning	992	
+Messages	tree.pruneAllBranchesToRoot	Prune all branches to root	997	
+Messages	tree.pruneBranchToRoot	Prune branch to root	1002	
+Messages	uploadAndMerge	Apply External Edits	1007	
+Messages	uploadAndMergeAdditions	Merge Ontologies	1011	
+Messages	uploadProject	Upload Project	1016	
+Messages	userName	Username	1021	
+Messages	viewProjects	View Projects	1026	
+Messages	watch	Watch	1031	
+Messages	merge.mergeInto	Merge Into...	1035	
+Messages	merge.mergeEntity	Merge {0}	1039	
+Messages	merge.selectEntityToMergeInto	Select {0} to Merge Into	1043	
+Messages	merge.description	This operation will merge the selected {0} into another {0}.<br><br>Specify a class name in the field below.  The currently selected {0} will be merged into this {0}.	1048	
+Messages	merge.mergeEntities	Merge {0}	1052	
+Messages	merge.confirmMessage	Do you want to merge entities?	1056	
+Messages	tags.entityTags	Entity Tags	1060	
+Messages	tags.edit	Tags...	1064	
+Messages	tags.projectTagsTitle	Project Tags	1068	
+Messages	tags.deleteTag	Delete Tag	1072	
+Messages	tags.displayedTags	Displayed tags	1076	
+Messages	tags.deleteConfirmationMessage	The tag <strong>{0}</strong> is used to tag <strong>{1,number}&nbsp;entities</strong>.  Are you sure that you want to delete this tag?<br><br>This operation cannot be undone.	1080	MANUAL
+Messages	tags.editProjectTags	Tags	1086	
+Messages	tags.displayTags	Display tags	1090	
+Messages	tags.duplicateTag.title	Duplicate Tag	1094	
+Messages	tags_duplicateTag_Message	The label <strong>{0}</strong> is used for more that one tag.<br><br>Please edit the labels so that a unique label is used for each tag.	1098	
+Messages	tags.tagAssignments.title	Tag Assignments	1101	
+Messages	project.settings	Settings	1106	
+Messages	app.settings.title	WebProtégé Application Settings	1110	
+Messages	app.settings.systemSettings	System Settings	1114	
+Messages	app.settings.applicationUrl	Application URL	1118	
+Messages	app.settings.globalPermissions	Permissions	1122	
+Messages	app.settings.emailNotificationSettings	Email Settings	1126	
+Messages	app.settings.url.scheme	Scheme	1130	
+Messages	app.settings.url.host	Host	1134	
+Messages	app.settings.url.path	Path	1138	
+Messages	app.settings.url.port	Port	1142	
+Messages	language.defaultSettings.title	New Entity Language Settings	1146	
+Messages	displayName.settings.project.title	Display Name Settings	1150	
+Messages	displayName.settings.project.helpText	Specify how entity display names should be generated.  The display name for an entity will be chosen based the ordering below.  Display names can be based on annotation properties and language pairs etc.Items that appear closer to the top of the list are given priority over items that appear closer to the bottom of the list.	1154	
+Messages	displayName.settings.project.priorityList.title	Display name property and language priority	1158	
+Messages	displayName.settings.project.reset.title	Reset to referenced languages	1162	
+Messages	displayName.settings.local.primary.title	Primary Display Name	1167	
+Messages	displayName.settings.local.primary.helpText	The primary display name is used as the display name for entities throughout the user interface.  Specify a list of property language pairs that should be used to generate the display name.  This setting is a local setting that takes precedence over the project default. Leave blank to use the project default.	1171	
+Messages	displayName.settings.local.secondary.title	Secondary Display Name	1175	
+Messages	displayName.settings.local.secondary.helpText	The secondary display name is displayed alongside the primary display name in hierarchies and lists of entities.  Specify a list of property language pairs that should be used to generate the secondary display name.  Leave blank for no secondary display name.	1179	
+Messages	displayName_noDisplayNameForLangTag	<em>Note: The current display name settings are not configured to display the language tag <strong>{0}</strong></em><br><br>You may continue and change the display name settings afterwards.  To edit the local display name settings please use the Display menu. To edit the global display name settings please see the Project Settings page.	1184	
+Messages	displayName.no_display_name.helpText	The {0} {1} does not have a primary display name under the current display name settings	1187	
+Messages	list.moveUp	Move up	1191	
+Messages	list.moveDown	Move down	1195	
+Messages	hierarchy.moveToParent	Jump to parent	1199	
+Messages	hierarchy.moveToSibling	Jump to sibling	1203	
+Messages	hierarchy.moveToChild	Jump to child	1207	
+Messages	hierarchy.siblings	Siblings	1211	
+Messages	hierarchy.children	Children	1215	
+Messages	hierarchy.parents	Parents	1219	
+Messages	watch.watches	Watches	1223	
+Messages	comments.editComment	Edit Comment	1227	
+Messages	search.searchFor	Search for {0}	1231	
+Messages	password.change.passwordChanged.title	Password changed	1235	
+Messages	password.change.passwordChanged.body	Your password has been successfully changed.	1239	
+Messages	password.change.specifyNewPassword	Please specify a new password	1243	
+Messages	password.change.passwordsDoNotMatch.title	Passwords do not match	1247	
+Messages	password.change.passwordsDoNotMatch.body	Please re-enter the new password and confirmation.	1251	
+Messages	password.change.currentPasswordIncorrect.title	Current password is incorrect	1255	
+Messages	password.change.currentPasswordIncorrect.body	The password that you specified as your current password is incorrect. Please re-enter your current password and try again.	1259	
+Messages	pagination.rows	({0,number} rows in total)	1263	MANUAL
+Messages	dictionaryLanguage.localName	Local name	1268	
+Messages	dictionaryLanguage.oboId	OBO Id	1272	
+Messages	dictionaryLanguage.prefixedName	Prefixed name	1276	
+Messages	projectSettings.importSettings.title	Import Project Settings	1280	
+Messages	projectSettings.importSettings.message	Paste the project settings that you wish to import into the text area below.  These settings will replaced any existing settings.	1284	
+Messages	projectSettings.importSettings.error.title	Import Project Settings Error	1288	
+Messages	projectSettings.importSettings.error.message	An error occurred when importing the project settings	1292	
+Messages	settings.export	Export settings...	1296	
+Messages	settings.import	Import settings...	1300	
+Messages	settings.import.complete.title	Import settings	1304	
+Messages	settings.import.complete.message	The settings have successfuly been imported.  We recommend that your refresh your browser.	1308	
+Messages	perspective.addBlankTab	Add blank tab	1313	
+Messages	perspective.addView	Add view	1318	
+Messages	perspective.close	Close	1323	
+Messages	perspective.reset	Reset	1328	
+Messages	perspective.manage	Manage...	1333	
+Messages	perspective.deleteConfirmation.title	Delete {0} tab?	1337	
+Messages	perspective.deleteConfirmation.message	Are you sure that you want to permanently delete the <strong>{0}</strong> tab?  This cannot be undone.	1341	
+Messages	perspective.resetConfirmation.title	Reset tabs?	1345	
+Messages	perspective.resetConfirmation.message	Are you sure that you want to reset the tabs to the default set of tabs?  This cannot be undone.	1349	
+Messages	common.pleaseWait	Please wait	1358	
+Messages	common.enterLinkUrl	Enter link URL	1362	
+Messages	common.correctHighlightedErrors	Please correct the highlighted errors on the form	1366	
+Messages	select.nothingToSelect	Nothing to select	1370	
+Messages	frame.enterAnEntityName	Enter an entity name	1374	
+Messages	frame.enterPropertyName	Enter property name	1378	
+Messages	frame.enterStringNumberEtc	Enter string, number etc.	1382	
+Messages	frame.enterClassOrIndividualName	Enter class or individual name	1386	
+Messages	frame.enterDatatypeStringNumberEtc	Enter datatype, string, number etc.	1390	
+Messages	lang.languageFilter	Language filter	1394	
+Messages	lang.noRemainingLanguages	No remaining languages	1398	
+Messages	search.addFilter	Add filter	1402	
+Messages	search.noRemainingFilters	No remaining filters	1406	
+Messages	perspective.nothingHere	Nothing Here	1410	
+Messages	perspective.noViewClassSpecified	No view class specified	1414	
+Messages	perspective.resetTabToDefaultState	Are you sure you want to reset the <em>{0}</em> tab to the default state?	1418	
+Messages	project.loading	Loading project. Please wait.	1422	
+Messages	project.nameMissing.title	Project name missing	1426	
+Messages	project.nameAlreadyRegistered	The project name {0} is already registered.  Please try a different name.	1430	
+Messages	projects.createForbidden	You do not have permission to create new projects	1434	
+Messages	csv.errorUploadingCsvFile	Error uploading CSV file	1438	
+Messages	csv.selectValueType	Select value type	1442	
+Messages	watches.forbidden	You do not have permission to watch changes in this project	1446	
+Messages	merge.selectMergeType	Select Merge Type	1450	
+Messages	merge.selectOntology	Select Ontology	1454	
+Messages	merge.selectOntologies	Select Ontologies	1458	
+Messages	merge.uploadedMergedSuccessfully	The uploaded ontologies were successfully merged into the project	1462	
+Messages	password.guestPasswordCannotBeChanged	The password of the guest user cannot be changed	1466	
+Messages	password.enterPasswordPrompt	Please enter a password	1470	
+Messages	change.enterCommitMessage	Enter commit message	1474	
+Messages	change.viewChangesForbidden	You do not have permission to view changes for this project	1478	
+Messages	viz.largeGraphMessage	The entity graph for {0} is large, with {1,number} nodes and {2,number} edges.  It may take a while to layout and display.	1482	
+Messages	viz.noEdge	No Edge	1486	
+Messages	mail.mustBeLoggedIn	You must be logged in to change your email address	1490	
+Messages	mail.retrievingEmailAddress	Retrieving email address	1494	
+Messages	mail.emailAddressesDoNotMatch	The specified email addresses do not match.	1498	
+Messages	mail.emailAddressTaken	The email address that you have specified is taken by another user.  Please specify a different email address.	1502	
+Messages	upload.invalidResponse	Invalid response	1506	
+Messages	signup.successfullyRegistered	You have successfully registered.	1510	
+Messages	signup.emailAddressAlreadyTaken.title	Email address already taken	1514	
+Messages	signup.userNameAlreadyTaken.title	User name already taken	1518	
+Messages	signup.emailAddressAlreadyTaken.message	The email address {0} is already taken.  Please choose a different email address.	1522	
+Messages	signup.errorRegisteringAccount.title	Error registering account	1526	
+Messages	signup.errorRegisteringAccount.message	There was a problem registering the specified user account.  Please contact administrator.	1530	
+Messages	signup.registrationComplete.title	Registration complete	1534	
+Messages	signup.userNameAlreadyTaken.message	A user named {0} is already registered.  Please choose another name.	1538	
+Messages	csv.importCsvFile.title	Import CSV File	1542	
+Messages	csv.importSucceeded.title	CSV import succeeded	1546	
+Messages	csv.rowsImported	{0} rows were imported	1550	
+Messages	csv.uploadCsv.title	Upload CSV	1554	
+Messages	merge.progressUploadingAndMerging	Uploading and Merging Ontologies	1558	
+Messages	merge.progressMergingIntoNew	Merging selected ontologies into new ontology. Please wait.	1562	
+Messages	merge.progressMergingIntoExisting	Merging selected ontologies into existing ontology. Please wait.	1566	
+Messages	merge.progressComputingDiff	Uploading ontologies and computing the diff.  Please wait.	1570	
+Messages	merge.progressMerging	Merging ontologies	1574	
+Messages	merge.progressApplyingMergeChanges	Applying changes to merge ontologies.  Please wait.	1578	
+Messages	project.progressCreating	Creating project	1582	
+Messages	project.uploadFailed.title	Upload Failed	1586	
+Messages	project.documentAlreadyExists	There is already a non-empty project on the server with the id {0}.  This project has NOT been overwritten.  Please contact the administrator to resolve this issue.	1590	
+Messages	mail.addressAlreadyTaken.title	Address already taken	1594	
+Messages	prefixes.progressRetrieving.title	Retrieving prefixes	1598	
+Messages	prefixes.progressRetrieving.message	Retrieving prefixes.  Please wait.	1602	
+Messages	prefixes.duplicateBindings.title	Duplicate prefix name bindings	1606	
+Messages	prefixes.duplicateBindings.message	Prefix name {0} is bound to more than one prefix.	1610	
+Messages	prefixes.changesApplied.title	Changes Applied	1614	
+Messages	prefixes.changesApplied.message	Your changes have been applied.	1618	
+Messages	individuals.confirmDeleteMultiple	Are you sure you want to delete {0} individuals?	1622	
+Messages	forms.provideLabel	Please provide a label for this form	1626	
+Messages	editor.noEditorAvailable	No editor available for selection: {0}	1630	
+Messages	prefixes.invalidPrefixCharacters	The following prefixes do not end in either of these characters:<br><br>{0}	1634	
+Messages	entityType.class	class	1638	
+Messages	bulkop.editOperation	Edit Operation	1642	
+Messages	bulkop.replaceMatchedAnnotations	Replace matched annotations	1646	
+Messages	bulkop.deleteMatchedAnnotations	Delete matched annotations	1650	
+Messages	bulkop.augmentMatchedAnnotations	Augment matched annotations	1654	
+Messages	bulkop.newProperty	New property	1658	
+Messages	bulkop.matchedProperty	Matched property	1662	
+Messages	bulkop.otherProperty	Other property	1666	
+Messages	bulkop.specifyProperty	Specify the property for the new annotation.	1670	
+Messages	bulkop.newValue	New value	1674	
+Messages	bulkop.matchedValue	Matched value	1678	
+Messages	bulkop.otherValue	Other value	1682	
+Messages	bulkop.specifyValue	Specify the value for the new annotation.  Regular expression group identifiers may be used if a regular expression is specified above.	1686	
+Messages	bulkop.newLangTag	New language tag	1690	
+Messages	bulkop.matchedLangTag	Matched language tag	1694	
+Messages	bulkop.otherLangTag	Other language tag	1698	
+Messages	bulkop.specifyLangTag	Specify a language tag for the new annotation.	1702	
+Messages	merge.selectHowToMerge	Please select how you would like to merge the ontologies	1706	
+Messages	merge.mergeIntoNewOntology	Merge into new ontology	1710	
+Messages	merge.mergeIntoExistingOntology	Merge into existing ontology	1714	
+Messages	password.currentPassword	Current password	1718	
+Messages	password.newPassword	New password	1722	
+Messages	password.confirmNewPassword	Confirm new password	1726	
+Messages	perspective.enterTabName	Enter tab name	1730	
+Messages	merge.uploadOntologies	Upload ontologies	1734	
+Messages	entityType.objectProperty	object property	1738	
+Messages	entityType.dataProperty	data property	1742	
+Messages	entityType.annotationProperty	annotation property	1746	
+Messages	entityType.datatype	datatype	1750	
+Messages	entityType.namedIndividual	named individual	1754	
+Messages	entityType.entities	Entities	1758	
+FormsMessages	expandCollapse	Expand/collapse element	16	
+FormsMessages	formsNotCopied.title	Some forms were not copied	20	
+FormsMessages	formsNotCopied.message	Some forms (<b>{0}</b>) were not copied because they are already present in this project.  If you would like to replace the existing forms you must first delete them.	24	
+FormsMessages	forms.title	Forms	28	
+FormsMessages	noFormSelected	No form selected	32	
+FormsMessages	noFormSelected_description	Please select a form to continue	36	
+FormsMessages	availableForms	Available forms	40	
+FormsMessages	addForm	Add form	44	
+FormsMessages	copyFormsFromProject_title	Copy forms from project	48	
+FormsMessages	copyFormsFromProject_explanation	You can all or some of the forms from any other projects that you mange to this project.  Select a project and then choose one or more forms from that project.	52	
+FormsMessages	copyFormsFromProject_help	Select the project that you would like to copy the forms from	56	
+FormsMessages	deleteForm	Delete form	60	
+FormsMessages	editForm	Edit form	64	
+FormsMessages	addFormElement	Add form element	69	
+FormsMessages	enterHelpText	Enter help text	74	
+FormsMessages	enterLabel	Enter label	78	
+FormsMessages	enterPlaceholder	Enter placeholder	82	
+FormsMessages	projectForms.title	Project Forms	86	
+FormsMessages	removeFormElement	Delete	90	
+FormsMessages	moveFormElementDown	Move down	94	
+FormsMessages	moveFormElementUp	Move up	99	
+FormsMessages	deleteFormElementConfirmation.title	Delete <b>{0}</b>?	103	
+FormsMessages	deleteFormElementConfirmation.message	Are you sure that you want to delete the <b>{0}</b> form?  This cannot be undone.	107	
+FormsMessages	selectProjectToExportTo	Please select the project that you wish to export the form to	111	
+FormsMessages	subForm.subject.annotations	Subject annotations	115	
+FormsMessages	subForm.subject.parents	Subject parents/types	119	
+FormsMessages	subForm.subject.pattern	Subject generated name pattern	123	
+FormsMessages	subForm.subject.type	Subject type	127	
+FormsMessages	edit	Edit	131	
+FormsMessages	edits.apply	Apply edits	135	
+FormsMessages	edits.cancel	Cancel edits	139	
+FormsMessages	grid.visibleColumns	Visible columns	143	
+FormsMessages	missingFieldLabel	Missing Field Label	147	
+FormsMessages	grid.columnFilter	Column  Filter	151	
+FormsMessages	filtered	Filtered	155	
+FormsMessages	clearFilters	Clear filters	159	
+FormsMessages	noLabelForFormSet	No label for form set	163	
+FormsMessages	exportForms	Export forms...	167	
+FormsMessages	importForms.title	Import forms...	171	
+FormsMessages	importForms.message	Please paste the forms description into the text area below	175	
+FormsMessages	importForms.error.title	Forms import failed	179	
+FormsMessages	importForms.error.message	An error occurred when importing the specified forms descriptors	183	

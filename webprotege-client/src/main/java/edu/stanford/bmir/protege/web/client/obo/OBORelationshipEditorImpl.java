@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.obo;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -42,14 +44,17 @@ public class OBORelationshipEditorImpl extends Composite implements ValueEditor<
     @UiField(provided = true)
     protected PrimitiveDataEditorImpl valueField;
 
+    private final Messages messages;
+
     @Inject
-    public OBORelationshipEditorImpl(PrimitiveDataEditorImpl propertyField, PrimitiveDataEditorImpl valueField) {
+    public OBORelationshipEditorImpl(PrimitiveDataEditorImpl propertyField, PrimitiveDataEditorImpl valueField, Messages messages) {
         this.propertyField = propertyField;
         this.valueField = valueField;
+        this.messages = messages;
         HTMLPanel rootElement = ourUiBinder.createAndBindUi(this);
         initWidget(rootElement);
-        propertyField.asWidget().getElement().setAttribute("placeholder", "Enter property name");
-        valueField.asWidget().getElement().setAttribute("placeholder", "Enter class name");
+        propertyField.asWidget().getElement().setAttribute("placeholder", messages.frame_enterPropertyName());
+        valueField.asWidget().getElement().setAttribute("placeholder", messages.frame_enterAClassName());
     }
 
     @UiHandler("propertyField")

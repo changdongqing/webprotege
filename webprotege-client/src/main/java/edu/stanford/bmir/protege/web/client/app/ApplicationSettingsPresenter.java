@@ -210,7 +210,7 @@ public class ApplicationSettingsPresenter implements Presenter {
 
                                            @Override
                                            public String getProgressDisplayMessage() {
-                                               return "Please wait";
+                                               return messages.common_pleaseWait();
                                            }
                                        });
     }

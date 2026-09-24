@@ -5,7 +5,7 @@
     <ui:with field="wp" type="edu.stanford.bmir.protege.web.resources.WebProtegeClientBundle"/>
     <g:HTMLPanel>
         <div class="{wp.style.formGroup}">
-            <g:Label text="Please select how you would like to merge the ontologies" addStyleNames="{wp.style.formLabel}"/>
+            <g:Label ui:field="selectionPromptLabel" text="Please select how you would like to merge the ontologies" addStyleNames="{wp.style.formLabel}"/>
         </div>
         <div class="{wp.style.formHorizontalRadioButtonGroup}">
             <g:RadioButton name="Group" ui:field = "radioButton1">Merge into new ontology</g:RadioButton>

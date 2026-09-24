@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.project;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -27,6 +29,8 @@ public class CreateNewProjectViewImpl extends Composite implements CreateNewProj
 
     private static CreateNewProjectViewImplUiBinder ourUiBinder = GWT.create(CreateNewProjectViewImplUiBinder.class);
 
+    private final Messages messages;
+
     @UiField
     TextBox projectNameField;
 
@@ -53,9 +57,11 @@ public class CreateNewProjectViewImpl extends Composite implements CreateNewProj
 
     @Inject
     public CreateNewProjectViewImpl(@Nonnull DefaultLanguageEditor languageEditor,
-                                    @Nonnull MessageBox messageBox) {
+                                    @Nonnull MessageBox messageBox,
+                                    Messages messages) {
         this.projectLanguageField = checkNotNull(languageEditor);
         this.messageBox = messageBox;
+        this.messages = checkNotNull(messages);
         initWidget(ourUiBinder.createAndBindUi(this));
     }
 
@@ -110,7 +116,7 @@ public class CreateNewProjectViewImpl extends Composite implements CreateNewProj
 
     @Override
     public void showProjectNameMissingMessage() {
-        messageBox.showAlert("Project name missing", "Please enter a project name");
+        messageBox.showAlert(messages.project_nameMissing_title(), messages.projectNameMissingErrorMessage());
     }
 
     @Override

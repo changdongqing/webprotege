@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.watches;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.gwt.user.client.Timer;
 import edu.stanford.bmir.protege.web.client.change.ChangeListPresenter;
 import edu.stanford.bmir.protege.web.client.change.ChangeListView;
@@ -31,6 +33,8 @@ public class WatchedEntitiesPortletPresenter extends AbstractWebProtegePortletPr
 
     private final LoggedInUserProjectPermissionChecker permissionChecker;
 
+    private final Messages messages;
+
     private final Timer refreshTimer = new Timer() {
         @Override
         public void run() {
@@ -47,11 +51,13 @@ public class WatchedEntitiesPortletPresenter extends AbstractWebProtegePortletPr
                                            LoggedInUserProjectPermissionChecker permissionChecker,
                                            SelectionModel selectionModel,
                                            ProjectId projectId,
-                                           LoggedInUserProvider loggedInUserProvider, DisplayNameRenderer displayNameRenderer) {
+                                           LoggedInUserProvider loggedInUserProvider, DisplayNameRenderer displayNameRenderer,
+                                           Messages messages) {
         super(selectionModel, projectId, displayNameRenderer);
         this.loggedInUserProvider = loggedInUserProvider;
         this.presenter = presenter;
         this.permissionChecker = permissionChecker;
+        this.messages = messages;
         changeListView = presenter.getView();
 
     }
@@ -71,7 +77,7 @@ public class WatchedEntitiesPortletPresenter extends AbstractWebProtegePortletPr
         eventBus.addProjectEventHandler(getProjectId(),
                                         ON_PERMISSIONS_CHANGED,
                                         event -> onRefresh());
-        portletUi.setForbiddenMessage("You do not have permission to watch changes in this project");
+        portletUi.setForbiddenMessage(messages.watches_forbidden());
 
         // TODO: Check this
 

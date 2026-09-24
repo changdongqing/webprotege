@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.project;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.web.bindery.event.shared.EventBus;
@@ -50,12 +52,15 @@ public class CreateNewProjectPresenter {
     @Nonnull
     private final MessageBox messageBox;
 
+    private final Messages messages;
+
     @Inject
     public CreateNewProjectPresenter(DispatchErrorMessageDisplay errorDisplay, ProgressDisplay progressDisplay, @Nonnull CreateNewProjectView view,
                                      @Nonnull LoggedInUserManager loggedInUserManager,
                                      @Nonnull DispatchServiceManager dispatchServiceManager,
                                      @Nonnull EventBus eventBus,
-                                     @Nonnull MessageBox messageBox) {
+                                     @Nonnull MessageBox messageBox,
+                                     Messages messages) {
         this.errorDisplay = errorDisplay;
         this.progressDisplay = progressDisplay;
         this.view = checkNotNull(view);
@@ -63,6 +68,7 @@ public class CreateNewProjectPresenter {
         this.dispatchServiceManager = checkNotNull(dispatchServiceManager);
         this.eventBus = checkNotNull(eventBus);
         this.messageBox = messageBox;
+        this.messages = checkNotNull(messages);
     }
 
     @Nonnull
@@ -141,7 +147,7 @@ public class CreateNewProjectPresenter {
             submitCreateNewProjectRequest(newProjectSettings, projectCreatedHandler);
         }
         else {
-            messageBox.showAlert("Upload Failed", response.getUploadRejectedMessage());
+            messageBox.showAlert(messages.project_uploadFailed_title(), response.getUploadRejectedMessage());
         }
     }
 
@@ -152,12 +158,12 @@ public class CreateNewProjectPresenter {
                                                                                        progressDisplay) {
                     @Override
                     public String getProgressDisplayTitle() {
-                        return "Creating project";
+                        return messages.project_progressCreating();
                     }
 
                     @Override
                     public String getProgressDisplayMessage() {
-                        return "Please wait.";
+                        return messages.common_pleaseWait();
                     }
 
                     @Override
@@ -169,17 +175,17 @@ public class CreateNewProjectPresenter {
                     @Override
                     public void handleExecutionException(Throwable cause) {
                         if (cause instanceof PermissionDeniedException) {
-                            messageBox.showMessage("You do not have permission to create new projects");
+                            messageBox.showMessage(messages.projects_createForbidden());
                         }
                         else if (cause instanceof ProjectAlreadyRegisteredException) {
                             ProjectAlreadyRegisteredException ex = (ProjectAlreadyRegisteredException) cause;
                             String projectName = ex.getProjectId().getId();
-                            messageBox.showMessage("The project name " + projectName + " is already registered.  Please try a different name.");
+                            messageBox.showMessage(messages.project_nameAlreadyRegistered(projectName));
                         }
                         else if (cause instanceof ProjectDocumentExistsException) {
                             ProjectDocumentExistsException ex = (ProjectDocumentExistsException) cause;
                             String projectName = ex.getProjectId().getId();
-                            messageBox.showMessage("There is already a non-empty project on the server with the id " + projectName + ".  This project has NOT been overwritten.  Please contact the administrator to resolve this issue.");
+                            messageBox.showMessage(messages.project_documentAlreadyExists(projectName));
                         }
                         else {
                             messageBox.showMessage(cause.getMessage());

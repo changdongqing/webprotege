@@ -1,6 +1,8 @@
 package edu.stanford.bmir.protege.web.server.issues;
 
 import edu.stanford.bmir.protege.web.server.access.AccessManager;
+import edu.stanford.bmir.protege.web.server.i18n.ServerMessages;
+import edu.stanford.bmir.protege.web.server.inject.MailProperties;
 import edu.stanford.bmir.protege.web.server.access.Subject;
 import edu.stanford.bmir.protege.web.server.mail.CommentMessageIdGenerator;
 import edu.stanford.bmir.protege.web.server.mail.MessageHeader;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.stream.Stream;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -49,6 +52,8 @@ public class CommentNotificationEmailer {
 
     private final CommentMessageIdGenerator messageIdGenerator;
 
+    private final Properties mailProperties;
+
     @Inject
     public CommentNotificationEmailer(@Nonnull ProjectDetailsManager projectDetailsManager,
                                       @Nonnull UserDetailsManager userDetailsManager,
@@ -56,8 +61,10 @@ public class CommentNotificationEmailer {
                                       @Nonnull DiscussionThreadParticipantsExtractor participantsExtractor,
                                       @Nonnull CommentNotificationEmailGenerator emailGenerator,
                                       @Nonnull SendMail sendMail,
-                                      @Nonnull CommentMessageIdGenerator messageIdGenerator) {
+                                      @Nonnull CommentMessageIdGenerator messageIdGenerator,
+                                      @MailProperties Properties mailProperties) {
         this.messageIdGenerator = checkNotNull(messageIdGenerator);
+        this.mailProperties = checkNotNull(mailProperties);
         this.projectDetailsManager = checkNotNull(projectDetailsManager);
         this.userDetailsManager = checkNotNull(userDetailsManager);
         this.accessManager = checkNotNull(accessManager);
@@ -143,9 +150,14 @@ public class CommentNotificationEmailer {
                                      @Nonnull OWLEntityData entityData,
                                      @Nonnull EntityDiscussionThread thread,
                                      @Nonnull Comment postedComment) {
+        String projectDisplayName = projectDetailsManager.getProjectDetails(projectId).getDisplayName();
+        String userName = postedComment.getCreatedBy().getUserName();
+        if ("zh".equalsIgnoreCase(mailProperties.getProperty("mail.locale", "en").trim())) {
+            return String.format("[%s] 用户 %s 发表了评论", projectDisplayName, userName);
+        }
         return String.format("[%s] Comment posted by %s",
-                             projectDetailsManager.getProjectDetails(projectId).getDisplayName(),
-                             postedComment.getCreatedBy().getUserName());
+                             projectDisplayName,
+                             userName);
     }
 
     private String formatMessage(@Nonnull ProjectId projectId,

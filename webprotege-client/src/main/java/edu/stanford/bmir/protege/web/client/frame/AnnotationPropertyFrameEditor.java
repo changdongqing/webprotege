@@ -12,6 +12,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
+import edu.stanford.bmir.protege.web.client.Messages;
 import edu.stanford.bmir.protege.web.client.editor.EditorView;
 import edu.stanford.bmir.protege.web.client.primitive.PrimitiveDataEditor;
 import edu.stanford.bmir.protege.web.client.primitive.PrimitiveDataListEditor;
@@ -46,6 +47,8 @@ public class AnnotationPropertyFrameEditor extends Composite implements EditorVi
 
     private Optional<AnnotationPropertyFrame> lastFrame = Optional.empty();
 
+    private final Messages messages;
+
     interface AnnotationPropertyFrameEditorUiBinder extends UiBinder<HTMLPanel, AnnotationPropertyFrameEditor> {
 
     }
@@ -74,7 +77,9 @@ public class AnnotationPropertyFrameEditor extends Composite implements EditorVi
 
     @Inject
     public AnnotationPropertyFrameEditor(PropertyValueListEditor annotationsEditor,
-                                         Provider<PrimitiveDataEditor> primitiveDataEditorProvider) {
+                                         Provider<PrimitiveDataEditor> primitiveDataEditorProvider,
+                                         Messages messages) {
+        this.messages = checkNotNull(messages);
         annotations = annotationsEditor;
         annotations.setGrammar(PropertyValueGridGrammar.getAnnotationsGrammar());
         domains = new PrimitiveDataListEditor(primitiveDataEditorProvider,
@@ -84,7 +89,7 @@ public class AnnotationPropertyFrameEditor extends Composite implements EditorVi
                                               PrimitiveType.ANNOTATION_PROPERTY,
                                               PrimitiveType.NAMED_INDIVIDUAL,
                                               PrimitiveType.DATA_TYPE);
-        domains.setPlaceholder("Enter an entity name");
+        domains.setPlaceholder(messages.frame_enterAnEntityName());
         ranges = new PrimitiveDataListEditor(primitiveDataEditorProvider,
                                              PrimitiveType.DATA_TYPE,
                                              PrimitiveType.CLASS,
@@ -92,7 +97,7 @@ public class AnnotationPropertyFrameEditor extends Composite implements EditorVi
                                              PrimitiveType.DATA_PROPERTY,
                                              PrimitiveType.ANNOTATION_PROPERTY,
                                              PrimitiveType.NAMED_INDIVIDUAL);
-        ranges.setPlaceholder("Enter an entity name");
+        ranges.setPlaceholder(messages.frame_enterAnEntityName());
         WebProtegeClientBundle.BUNDLE.style().ensureInjected();
         HTMLPanel rootElement = ourUiBinder.createAndBindUi(this);
         initWidget(rootElement);

@@ -95,8 +95,7 @@ public class DeleteEntitiesPresenter {
                 .findFirst()
                 .map(OWLEntityData::getEntity)
                 .map(OWLEntity::getEntityType)
-                .map(type -> entities.size() > 1 ? type.getPluralPrintName() : type.getPrintName())
-                .map(String::toLowerCase)
+                .map(this::getLocalizedTypeName)
                 .orElse("");
         String browserText = entities.stream()
                 .map(OWLEntityData::getBrowserText)
@@ -115,9 +114,32 @@ public class DeleteEntitiesPresenter {
         String type = entities.stream()
                 .findFirst()
                 .map(e -> e.getEntity().getEntityType())
-                .map(EntityType::getPluralPrintName)
-                .orElse("Entities");
+                .map(this::getLocalizedTypeName)
+                .orElse(messages.entityType_entities());
         return messages.delete_entity_title(type);
+    }
+
+    @Nonnull
+    private String getLocalizedTypeName(@Nonnull EntityType<?> entityType) {
+        if (entityType == EntityType.CLASS) {
+            return messages.entityType_class();
+        }
+        if (entityType == EntityType.OBJECT_PROPERTY) {
+            return messages.entityType_objectProperty();
+        }
+        if (entityType == EntityType.DATA_PROPERTY) {
+            return messages.entityType_dataProperty();
+        }
+        if (entityType == EntityType.ANNOTATION_PROPERTY) {
+            return messages.entityType_annotationProperty();
+        }
+        if (entityType == EntityType.DATATYPE) {
+            return messages.entityType_datatype();
+        }
+        if (entityType == EntityType.NAMED_INDIVIDUAL) {
+            return messages.entityType_namedIndividual();
+        }
+        return entityType.getPrintName();
     }
 
     private void deleteEntity(@Nonnull Set<OWLEntityData> entities,

@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.frame;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.gwt.core.client.GWT;
@@ -89,6 +91,8 @@ public class ManchesterSyntaxFrameEditorPresenter implements HasSubject<OWLEntit
 
     @Nonnull
     private EntityDisplay entityDisplay = entityData -> {};
+
+    private static final Messages MESSAGES = GWT.create(Messages.class);
 
     @Inject
     public ManchesterSyntaxFrameEditorPresenter(ManchesterSyntaxFrameEditor editor, ProjectId projectId, LoggedInUserProjectPermissionChecker permissionChecker, DispatchServiceManager dispatchServiceManager, LoggedInUserProvider loggedInUserProvider, DispatchErrorMessageDisplay errorDisplay, @Nonnull InputBox inputBox) {
@@ -217,7 +221,7 @@ public class ManchesterSyntaxFrameEditorPresenter implements HasSubject<OWLEntit
     }
 
     private void applyChangesWithCommitMessage() {
-        inputBox.showDialog("Enter commit message", new InputBoxHandler() {
+        inputBox.showDialog(MESSAGES.change_enterCommitMessage(), new InputBoxHandler() {
             @Override
             public void handleAcceptInput(String input) {
                 applyChangesWithCommitMessage(input);

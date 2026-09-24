@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import edu.stanford.bmir.protege.web.client.action.AbstractUiAction;
 import edu.stanford.bmir.protege.web.client.action.UIAction;
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchServiceManager;
+import edu.stanford.bmir.protege.web.client.Messages;
 import edu.stanford.bmir.protege.web.client.library.common.HasPlaceholder;
 import edu.stanford.bmir.protege.web.client.library.popupmenu.PopupMenu;
 import edu.stanford.bmir.protege.web.client.library.tokenfield.AddTokenCallback;
@@ -42,6 +43,9 @@ public class LangTagFilterPresenter {
     private final DispatchServiceManager dispatchServiceManager;
 
     @Nonnull
+    private final Messages messages;
+
+    @Nonnull
     private LangTagFilterChangedHandler langTagFilterChangedHandler = () -> {
     };
 
@@ -49,12 +53,14 @@ public class LangTagFilterPresenter {
     public LangTagFilterPresenter(LangTagFilterView view,
                                   ProjectId projectId,
                                   @Nonnull TokenFieldPresenter<LangTag> langTagTokenPresenter,
-                                  @Nonnull DispatchServiceManager dispatchServiceManager) {
+                                  @Nonnull DispatchServiceManager dispatchServiceManager,
+                                  @Nonnull Messages messages) {
         this.view = checkNotNull(view);
         this.projectId = checkNotNull(projectId);
         this.langTagTokenPresenter = checkNotNull(langTagTokenPresenter);
         this.dispatchServiceManager = checkNotNull(dispatchServiceManager);
-        this.langTagTokenPresenter.setPlaceholder("Language filter");
+        this.messages = checkNotNull(messages);
+        this.langTagTokenPresenter.setPlaceholder(messages.lang_languageFilter());
     }
 
     @Nonnull
@@ -96,7 +102,7 @@ public class LangTagFilterPresenter {
                                                                         callback.addToken(langTag, langTag.format());
                                                  }));
                                            if(popupMenu.isEmpty()) {
-                                               UIAction action = new AbstractUiAction("No remaining languages") {
+                                               UIAction action = new AbstractUiAction(messages.lang_noRemainingLanguages()) {
                                                    @Override
                                                    public void execute() {
 

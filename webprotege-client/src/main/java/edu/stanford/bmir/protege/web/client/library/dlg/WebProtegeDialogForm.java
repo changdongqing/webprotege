@@ -1,5 +1,9 @@
 package edu.stanford.bmir.protege.web.client.library.dlg;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
+import com.google.gwt.core.client.GWT;
+
 import com.google.gwt.user.client.ui.*;
 
 import java.util.ArrayList;
@@ -46,6 +50,8 @@ public class WebProtegeDialogForm extends WebProtegePanel implements HasInitialF
 
     private List<WebProtegeDialogTextFieldValidationManager> inlineValidators = new ArrayList<WebProtegeDialogTextFieldValidationManager>();
 
+    private static final Messages MESSAGES = GWT.create(Messages.class);
+
     public WebProtegeDialogForm() {
         formPanel = new FormPanel();
         formPanel.setMethod(FormPanel.METHOD_POST);
@@ -71,7 +77,7 @@ public class WebProtegeDialogForm extends WebProtegePanel implements HasInitialF
             }
 
             public String getValidationMessage() {
-                return "Please correct the highlighted errors on the form";
+                return MESSAGES.common_correctHighlightedErrors();
             }
         });
     }
@@ -177,7 +183,7 @@ public class WebProtegeDialogForm extends WebProtegePanel implements HasInitialF
      */
     public PasswordTextBox addPasswordTextBox(String label, String placeholderText, String initialValue) {
         PasswordTextBox passwordTextBox = new PasswordTextBox();
-        addTextBox(passwordTextBox, label, placeholderText, initialValue, new NonEmptyWebProtegeDialogTextFieldValidator("Please enter a password"));
+        addTextBox(passwordTextBox, label, placeholderText, initialValue, new NonEmptyWebProtegeDialogTextFieldValidator(MESSAGES.password_enterPasswordPrompt()));
         return passwordTextBox;
     }
     

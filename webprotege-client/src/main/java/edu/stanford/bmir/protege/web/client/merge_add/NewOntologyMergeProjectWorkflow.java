@@ -1,5 +1,7 @@
 package edu.stanford.bmir.protege.web.client.merge_add;
 
+import edu.stanford.bmir.protege.web.client.Messages;
+
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchErrorMessageDisplay;
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchServiceCallbackWithProgressDisplay;
 import edu.stanford.bmir.protege.web.client.dispatch.DispatchServiceManager;
@@ -32,13 +34,17 @@ public class NewOntologyMergeProjectWorkflow {
     @Nonnull
     private final ProgressDisplay progressDisplay;
 
+    private final Messages messages;
+
     @Inject
     public NewOntologyMergeProjectWorkflow(@Nonnull DispatchServiceManager dispatchServiceManager,
                                            @Nonnull MessageBox messageBox,
+                                           Messages messages,
                                            @Nonnull DispatchErrorMessageDisplay errorDisplay,
                                            @Nonnull ProgressDisplay progressDisplay) {
         this.dispatchServiceManager = dispatchServiceManager;
         this.messageBox = messageBox;
+        this.messages = messages;
         this.errorDisplay = errorDisplay;
         this.progressDisplay = progressDisplay;
     }
@@ -64,17 +70,17 @@ public class NewOntologyMergeProjectWorkflow {
         dispatchServiceManager.execute(new NewOntologyMergeAddAction(projectId, documentId, iri, ontologyList), new DispatchServiceCallbackWithProgressDisplay<NewOntologyMergeAddResult>(errorDisplay, progressDisplay) {
             @Override
             public String getProgressDisplayTitle() {
-                return "Uploading and Merging Ontologies";
+                return messages.merge_progressUploadingAndMerging();
             }
 
             @Override
             public String getProgressDisplayMessage() {
-                return "Merging selected ontologies into new ontology. Please wait.";
+                return messages.merge_progressMergingIntoNew();
             }
 
             @Override
             public void handleSuccess(NewOntologyMergeAddResult result){
-                messageBox.showMessage("The uploaded ontologies were successfully merged into the project");
+                messageBox.showMessage(messages.merge_uploadedMergedSuccessfully());
             }
         });
     }

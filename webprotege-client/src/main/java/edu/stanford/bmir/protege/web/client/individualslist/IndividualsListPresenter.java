@@ -275,11 +275,11 @@ public class IndividualsListPresenter implements EntityNodeIndex {
         if (sel.size() == 1) {
             String browserText = sel.iterator().next().getBrowserText();
             title = messages.delete_entity_title(browserText);
-            subMessage = messages.delete_entity_msg("individual", browserText);
+            subMessage = messages.delete_entity_msg(messages.entityType_namedIndividual(), browserText);
         }
         else {
-            title = messages.delete_entity_title("individuals");
-            subMessage = "Are you sure you want to delete " + sel.size() + " individuals?";
+            title = messages.delete_entity_title(messages.entityType_namedIndividual());
+            subMessage = messages.individuals_confirmDeleteMultiple(sel.size());
         }
         messageBox.showConfirmBox(title,
                                   subMessage,

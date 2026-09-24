@@ -1,0 +1,47 @@
+<html>
+<head>
+    <style>
+        .main {
+            font-family: Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        .userName {
+            font-weight: bold;
+        }
+        .entityName {
+            font-weight: bold;
+        }
+        .projectName {
+            font-weight: bold;
+        }
+        .comment {
+            padding: 20px 10px 10px;
+        }
+        .footer {
+            padding-top: 20px;
+            font-size: 10px;
+            color: #707070;
+            line-height: 1.5;
+        }
+        blockquote {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-left: 3px solid #d0d0d0;
+            color: #a0a0a0;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div>
+        <span class="userName">{{comment.createdBy.userName}}</span> 在项目 <span class="projectName">{{project.displayName}}</span> 的实体 <span class="entityName"><a href="{{{entity.url}}}">{{entity.browserText}}</a></span> 上发表了评论
+    </div>
+    <div class="comment">
+        {{{comment.renderedBody}}}
+    </div>
+    <div class="footer">
+        在 <a href="{{{entity.url}}}">{{application.name}}</a> 上查看这条评论。<br>
+        你收到这封邮件是因为你是项目 <a href="{{{project.url}}}">{{project.displayName}}</a> 的参与者。
+    </div>
+</div>
+</body></html>

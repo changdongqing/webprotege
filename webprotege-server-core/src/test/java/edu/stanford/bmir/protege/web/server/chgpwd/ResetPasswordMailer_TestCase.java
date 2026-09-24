@@ -8,6 +8,7 @@ import edu.stanford.bmir.protege.web.server.mail.SendMailImpl;
 import edu.stanford.bmir.protege.web.server.templates.TemplateEngine;
 import edu.stanford.bmir.protege.web.shared.user.UserId;
 import org.hamcrest.Matchers;
+import java.util.Properties;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -70,7 +71,7 @@ public class ResetPasswordMailer_TestCase {
 
     @Before
     public void setUp() throws Exception {
-        mailer = new ResetPasswordMailer(sendMailImpl, templateEngine, templateFile, placeUrl, appNameSupplier);
+        mailer = new ResetPasswordMailer(sendMailImpl, templateEngine, templateFile, placeUrl, appNameSupplier, new Properties());
         when(templateFile.getContents())
                 .thenReturn(TEMPLATE);
         when(userId.getUserName())
