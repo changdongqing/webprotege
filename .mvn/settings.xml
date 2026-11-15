@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <mirrors>
+    <!--
+      The pom.xml declares two extra repositories whose requests are either
+      dead (oss-sonatype) or pathologically slow/stalling (edu.protege.stanford
+      on GitHub raw). Every artifact the build needs resolves from Central, so
+      both are mirrored here to keep the build off those hosts.
+    -->
+    <mirror>
+      <id>central-for-oss-sonatype</id>
+      <mirrorOf>oss-sonatype</mirrorOf>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </mirror>
+    <mirror>
+      <id>central-for-stanford</id>
+      <mirrorOf>edu.protege.stanford</mirrorOf>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </mirror>
+  </mirrors>
+</settings>
